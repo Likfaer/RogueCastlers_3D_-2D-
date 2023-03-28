@@ -69,6 +69,7 @@ public class PlayerStats : MonoBehaviour
         {
             health = 0;
             Destroy(player);
+            PlayerPrefs.SetInt("RoomsCount", 0);
         }
     }
     float CalculateHealthPercentage()

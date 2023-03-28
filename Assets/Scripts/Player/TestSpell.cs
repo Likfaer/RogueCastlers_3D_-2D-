@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestSpell : MonoBehaviour
 {
@@ -10,7 +11,16 @@ public class TestSpell : MonoBehaviour
     public float maxDamage;
     public float projectileForce;
 
-     void Update()
+    public Text AttackText;
+    private void Start()
+    {
+        SetAttackUI();
+    }
+    private void SetAttackUI()
+    {
+        AttackText.text = "Atk: " + minDamage + " - " + maxDamage;
+    }
+    void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {

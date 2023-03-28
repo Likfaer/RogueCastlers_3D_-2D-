@@ -26,20 +26,20 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.Find("Player");
         defaultX = DefX;
         defaultY = DefY;
-        Debug.Log("enemies in StartSpawn: " + numEnemies);
+        //Debug.Log("enemies in StartSpawn: " + numEnemies);
         StartCoroutine(SpawnTestEnemy(numEnemies));
     }
     IEnumerator SpawnTestEnemy(int numEnemies)
     {
-        Debug.Log("enemies in SpawnTestEnemy: " + numEnemies);
+        //Debug.Log("enemies in SpawnTestEnemy: " + numEnemies);
         isCoroutineRunning = true;
         while (numEnemies > 0)
         {
-            Debug.Log("Total will be spawned: " + numEnemies);
+            //Debug.Log("Total will be spawned: " + numEnemies);
             x = Random.Range(-0.225f, 0.225f);
             y = Random.Range(-0.225f, 0.225f);
-            spawnPos.x = (Random.Range(0.05f, defaultX - 0.225f) + x) / 2f + 0.025f;
-            spawnPos.y = (Random.Range(0.05f, defaultY - 0.225f) + y) / 2f + 0.025f;
+            spawnPos.x = (Random.Range(0.3f, defaultX / 2f - 0.3f) + x);
+            spawnPos.y = (Random.Range(0.3f, defaultY / 2f - 0.3f) + y);
             if (player != null)
             {
                 GameObject Enemy = Instantiate(Enemies[0], spawnPos, Quaternion.identity);

@@ -24,16 +24,28 @@ public class RoomGenerator : MonoBehaviour
     EnemySpawner spawner;
     private Vector3 spawnPos;
     private int countEnemies;
+    private int countRooms;
+
+
 
     private GameObject UI_Overlay;
     private Transform UItoPanel;
     private GameObject EnemyPanel;
-    private Transform PaneltoText;
+    private Transform PaneltoTextEnemy;
+    private Transform PaneltoTextRoom;
     public Text EnemiesCountText;
+    public Text RoomsCountText;
 
-
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("RoomsCount", 0);
+    }
     void Start()
     {
+
+        //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
+        countRooms = PlayerPrefs.GetInt("RoomsCount");
+
         //room-size
         setRoomSize();
         //enemies
@@ -45,15 +57,22 @@ public class RoomGenerator : MonoBehaviour
         UI_Overlay = GameObject.Find("UI_Overlay");
         UItoPanel = UI_Overlay.transform.Find("EnemyPanel");
         EnemyPanel = UItoPanel.gameObject;
-        PaneltoText = EnemyPanel.transform.Find("EnemiesText");
-        EnemiesCountText = PaneltoText.GetComponent<Text>();
+
+        PaneltoTextEnemy = EnemyPanel.transform.Find("EnemiesText");
+        EnemiesCountText = PaneltoTextEnemy.GetComponent<Text>();
         EnemiesCountText.text = "";
+
+        PaneltoTextRoom = EnemyPanel.transform.Find("RoomsText");
+        RoomsCountText = PaneltoTextRoom.GetComponent<Text>();
+        //RoomsCountText.text = "Room 0";
+        getRoomCountUI();
         //Enemies
 
 
-        countEnemies = Mathf.RoundToInt(size.x * size.y / 4.6f);
+        countEnemies = Mathf.RoundToInt(size.x * size.y * 4.6f);
         //countEnemies = 4;
-        Debug.Log("enemies in RoomGen: " + countEnemies);
+
+        //Debug.Log("enemies in RoomGen: " + countEnemies);
 
         //room-collision
         //floor
@@ -119,6 +138,11 @@ public class RoomGenerator : MonoBehaviour
     protected void getEnemiesCountUI()
     {
         EnemiesCountText.text = spawner.getEnemiesNow() + " / " + countEnemies;
+    }
+    protected void getRoomCountUI()
+    {
+        
+        RoomsCountText.text = "Room " + countRooms;
     }
     // Update is called once per frame
     void Update()

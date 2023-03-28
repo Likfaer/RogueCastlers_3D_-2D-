@@ -56,6 +56,7 @@ MonoBehaviour:
   shop: {fileID: 0}
   nextRoomButton: {fileID: 2584158855478673921, guid: 8e06429e0a7dbe04481ea5c55a79ef4f, type: 3}
   EnemiesCountText: {fileID: 0}
+  RoomsCountText: {fileID: 0}
 --- !u!114 &1930163357639608864
 MonoBehaviour:
   m_ObjectHideFlags: 0
