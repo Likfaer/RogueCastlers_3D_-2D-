@@ -19,14 +19,10 @@ public class RoomGenerator : MonoBehaviour
     //teleports
     public GameObject shop, nextRoomButton;
 
-    
-
     EnemySpawner spawner;
     private Vector3 spawnPos;
     private int countEnemies;
     private int countRooms;
-
-
 
     private GameObject UI_Overlay;
     private Transform UItoPanel;
@@ -69,7 +65,7 @@ public class RoomGenerator : MonoBehaviour
         //Enemies
 
 
-        countEnemies = Mathf.RoundToInt(size.x * size.y * 4.6f);
+        countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
         //countEnemies = 4;
 
         //Debug.Log("enemies in RoomGen: " + countEnemies);

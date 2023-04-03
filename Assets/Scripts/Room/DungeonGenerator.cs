@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    
     public class Cell
     {
         public bool visited = false;
         public bool[] status = new bool[4];
 
     }
-
+     
     public Vector2 size;
     public int startDungeonPos = 0;
 
@@ -47,6 +48,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
     }
+    
     void MazeGenerator()
     {
         board = new List<Cell>();
@@ -58,6 +60,7 @@ public class DungeonGenerator : MonoBehaviour
                 board.Add(new Cell());
             }
         }
+        
         int currentCell = startDungeonPos;
 
         Stack<int> path = new Stack<int>();
