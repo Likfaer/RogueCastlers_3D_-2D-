@@ -1,3 +1,4 @@
+using Ludiq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     }
     public void StartSpawn(int numEnemies, float DefX, float DefY)
     {
-        EnemiesList = new GameObject("EnemiesList");
+        EnemiesList = GameObject.Find("EnemiesList");
         player = GameObject.Find("Player");
         defaultX = DefX;
         defaultY = DefY;

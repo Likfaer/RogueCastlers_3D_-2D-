@@ -62,8 +62,11 @@ public class NextRoom : MonoBehaviour
     private void LoadNextRoom()
     {
         GameObject oldRG = GameObject.Find("RoomGenerator");
-        GameObject oldEnemiesList = GameObject.Find("EnemiesList");
         GameObject DropList = GameObject.Find("DropList");
+        foreach (Transform child in DropList.transform)
+        {
+            Destroy(child.gameObject);
+        }
         if (oldRG == null)
         {
             oldRG = GameObject.Find("RoomGenerator(Clone)");
@@ -72,8 +75,6 @@ public class NextRoom : MonoBehaviour
         Transform playerTP = player.transform;
         playerTP.position = new Vector3 (0.175f, 0.25f, 0f);
         Destroy(oldRG);
-        Destroy(oldEnemiesList);
-        Destroy(DropList);
         //Debug.Log("Adding " + PlayerPrefs.GetInt("RoomsCount") + " + 1 ");
         PlayerPrefs.SetInt("RoomsCount", PlayerPrefs.GetInt("RoomsCount") + 1);
         Instantiate(nextRoom, new Vector3(0.5f,0.5f,0), Quaternion.identity);

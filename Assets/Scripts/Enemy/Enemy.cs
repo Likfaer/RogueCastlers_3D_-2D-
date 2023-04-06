@@ -43,7 +43,8 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            Instantiate(lootDrop, transform.position,Quaternion.identity);
+            GameObject loot = Instantiate(lootDrop, transform.position,Quaternion.identity);
+            loot.transform.parent = GameObject.Find("DropList").transform;
         }
     }
 

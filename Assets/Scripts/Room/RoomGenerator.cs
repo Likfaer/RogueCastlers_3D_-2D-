@@ -38,10 +38,8 @@ public class RoomGenerator : MonoBehaviour
     }
     void Start()
     {
-
         //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
         countRooms = PlayerPrefs.GetInt("RoomsCount");
-
         //room-size
         setRoomSize();
         //enemies
