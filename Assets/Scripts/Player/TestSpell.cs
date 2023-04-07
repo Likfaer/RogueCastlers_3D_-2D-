@@ -11,19 +11,32 @@ public class TestSpell : MonoBehaviour
     public float maxDamage;
     public float projectileForce;
 
+    public float attackCooldown;
+    private float lastAttackTime;
+
     public Text AttackText;
+    public Text AttackSpeedText;
+
     private void Start()
     {
         SetAttackUI();
+        SetAttackSpeedUI();
     }
     private void SetAttackUI()
     {
         AttackText.text = "Atk: " + minDamage + " - " + maxDamage;
     }
+    private void SetAttackSpeedUI()
+    {
+        AttackSpeedText.text = "AtkS: " + attackCooldown;
+    }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Time.time - lastAttackTime > attackCooldown)
         {
+            lastAttackTime = Time.time;
+
             GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector3 mouseposition = Input.mousePosition;
             mouseposition.z = 2f;
