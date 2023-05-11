@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NextRoom : MonoBehaviour
+public class NextShop : MonoBehaviour
 {
     public float TeleportationDelay;
 
@@ -73,11 +73,11 @@ public class NextRoom : MonoBehaviour
         }
         GameObject player = GameObject.Find("Player");
         Transform playerTP = player.transform;
-        playerTP.position = new Vector3 (0.175f, 0.25f, 0f);
+        playerTP.position = new Vector3(0.175f, 0.25f, 0f);
         Destroy(oldRG);
         //Debug.Log("Adding " + PlayerPrefs.GetInt("RoomsCount") + " + 1 ");
         PlayerPrefs.SetInt("RoomsCount", PlayerPrefs.GetInt("RoomsCount") + 1);
-        Instantiate(nextRoom, new Vector3(0.5f,0.5f,0), Quaternion.identity);
+        Instantiate(nextRoom, new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
     }
 
     private IEnumerator LaunchScriptAfterDelay()
@@ -90,9 +90,9 @@ public class NextRoom : MonoBehaviour
             yield return null;
         }
         timerNextText.text = "Time: 0.00";
-        
+
         //Debug.Log("TP");
-        
+
         LoadNextRoom();
         launchScriptCoroutine = null;
     }

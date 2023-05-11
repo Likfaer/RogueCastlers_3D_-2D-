@@ -6,23 +6,20 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 using static UnityEditorInternal.ReorderableList;
 
-public class RoomGenerator : MonoBehaviour
+public class ShopGenerator : MonoBehaviour
 {
     public int xMin, xMax, yMin, yMax;
-    
+
     private Vector2 size;
     public Vector2 offset;
-    
+
     //room-objects
     public GameObject wallVert, wallHor, floor, corner;
 
     //teleports
-    public GameObject ShopButton, nextRoomButton;
+    public GameObject nextRoomButton;
 
     //overlay
-    EnemySpawner spawner;
-    private Vector3 spawnPos;
-    private int countEnemies;
     private int countRooms;
 
     private GameObject UI_Overlay;
@@ -39,13 +36,9 @@ public class RoomGenerator : MonoBehaviour
     }
     void Start()
     {
-        //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
         countRooms = PlayerPrefs.GetInt("RoomsCount");
         //room-size
         setRoomSize();
-        //enemies
-
-        spawner = GetComponent<EnemySpawner>();
 
         //UI_Overlay
 
@@ -61,13 +54,7 @@ public class RoomGenerator : MonoBehaviour
         RoomsCountText = PaneltoTextRoom.GetComponent<Text>();
         //RoomsCountText.text = "Room 0";
         getRoomCountUI();
-        //Enemies
 
-
-        //countEnemies = Mathf.RoundToInt(size.x * size.y / 9.6f);
-        countEnemies = 0;
-
-        //Debug.Log("enemies in RoomGen: " + countEnemies);
 
         //room-collision
         //floor
@@ -75,20 +62,15 @@ public class RoomGenerator : MonoBehaviour
         {
             for (int j = 0; j < size.y; j++)
             {
-                Instantiate(floor,new Vector3((transform.position.x + i) * offset.x, (transform.position.y + j) * offset.y, 0),Quaternion.identity, transform);
+                Instantiate(floor, new Vector3((transform.position.x + i) * offset.x, (transform.position.y + j) * offset.y, 0), Quaternion.identity, transform);
             }
         }
         Walls();
-        //enemies
-
-        spawner.StartSpawn(countEnemies, size.x, size.y);
 
         //Teleports
-        nextRoomButton = Instantiate(nextRoomButton, new Vector3(size.x * 0.25f , size.y * 0.25f + 0.5f , 0), Quaternion.identity, transform);
-        ShopButton = Instantiate(ShopButton, new Vector3(size.x * 0.25f + 0.5f, size.y * 0.25f + 0.5f, 0), Quaternion.identity, transform);
+        nextRoomButton = Instantiate(nextRoomButton, new Vector3(0.25f, size.y * 0.25f + 0.5f, 0), Quaternion.identity, transform);
         //nextroom должен запускать свой старт для включения панельки с таймером перехода
-        nextRoomButton.SetActive(false);
-        ShopButton.SetActive(false);
+        nextRoomButton.SetActive(true);
     }
     void Walls()
     {
@@ -128,32 +110,17 @@ public class RoomGenerator : MonoBehaviour
             size.y--;
         }
     }
+    protected void getRoomCountUI()
+    {
+        RoomsCountText.text = "Room " + countRooms;
+    }
     public Vector2 getRoomSize()
     {
         return size;
     }
-    protected void getEnemiesCountUI()
-    {
-        EnemiesCountText.text = spawner.getEnemiesNow() + " / " + countEnemies;
-    }
-    protected void getRoomCountUI()
-    {
-        
-        RoomsCountText.text = "Room " + countRooms;
-    }
     // Update is called once per frame
     void Update()
     {
-        getEnemiesCountUI();
-        if (!spawner.IsCoroutineRunning() && spawner.getEnemiesNow() == 0)
-        {
-            nextRoomButton.SetActive(true);
-            ShopButton.SetActive(true);
-            EnemiesCountText.text = "Finished!";
-        }
-        else
-        {
 
-        }
     }
 }

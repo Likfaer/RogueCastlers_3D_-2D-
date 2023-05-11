@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using MiscUtil.Threading;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,7 +25,12 @@ public class PlayerMovement : MonoBehaviour
     private enum Facing {UP, DOWN, LEFT, RIGHT};
     private Facing FacingDir = Facing.DOWN;
 
-    
+    private WeaponParent weaponParent;
+
+    private void Awake()
+    {
+        weaponParent = GetComponentInChildren<WeaponParent>();
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,18 +40,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        weaponParent.MousePos = targetPos;
         TakeInput();
         Move();
-
     }
-
     private void getSpeedUI()
     {
         speedText.text = "Speed: " + speed.ToString();
     }
     private void getDashUI()
     {
-        dashText.text = "  Dash: " + dashRange.ToString();
+        dashText.text = "Dash: " + dashRange.ToString();
     }
     private void Move()
     {
