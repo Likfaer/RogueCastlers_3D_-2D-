@@ -19,6 +19,10 @@ public class ShopGenerator : MonoBehaviour
     //teleports
     public GameObject nextRoomButton;
 
+    // buffs
+    public GameObject rangeDamageBuff, rangeAttackspeedBuff, speedBuff, healthBuff;
+
+
     //overlay
     private int countRooms;
 
@@ -72,6 +76,13 @@ public class ShopGenerator : MonoBehaviour
         //nextroom должен запускать свой старт для включения панельки с таймером перехода
         nextRoomButton.SetActive(true);
     }
+
+    public void RandomShop()
+    {
+        // speed,atkspeed, speed,health
+
+    }
+
     void Walls()
     {
         // Left+Right Walls

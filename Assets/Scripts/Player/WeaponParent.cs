@@ -1,3 +1,4 @@
+using Ludiq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,13 @@ public class WeaponParent : MonoBehaviour
 
     private bool attackBlocked;
 
+    public Transform circleOrigin;
+    public float radius;
+
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         Vector3 mouseposition = Input.mousePosition;
@@ -57,5 +65,32 @@ public class WeaponParent : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+        Gizmos.DrawSphere(position, radius);
+    }
+
+    public void DetectColliders()
+    {
+        foreach( Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
+        {
+            Debug.Log(collision.name);
+            if (collision.name != "Player")
+            {
+                if (collision.GetComponent<Enemy>() != null)
+                {
+                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage));
+                }
+                if (collision.GetComponent<TestEnemyProjectile>() != null)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+        }
     }
 }
