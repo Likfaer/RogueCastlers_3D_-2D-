@@ -31,7 +31,7 @@ public class PlayerUpgrades : MonoBehaviour
     }
     public void SpeedUpgrade(float value)
     {
-        player.GetComponent<PlayerMovement>().speed += value;
+        player.GetComponent<PlayerInput>().speed += value;
     }
 
     //Degrades
@@ -55,6 +55,6 @@ public class PlayerUpgrades : MonoBehaviour
     }
     public void SpeedReduce(float value)
     {
-        player.GetComponent<PlayerMovement>().speed -= value;
+        player.GetComponent<PlayerInput>().speed -= value;
     }
 }

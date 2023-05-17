@@ -17,8 +17,10 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
     }
-    public void DealDamage(float damage)
+    public void DealDamage(float damage, int layer)
     {
+        if (layer == gameObject.layer)
+            return;
         healthBar.SetActive(true);
         health -= damage;
         CheckDeath();

@@ -1,3 +1,4 @@
+using Bolt;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,16 @@ using UnityEngine.Events;
 
 public class EnemyAI : EnemyAttack
 {
-    [SerializeField] public float speed;
+    public UnityEvent<Vector2> onMovementInput, onPointerInput;
+    public UnityEvent onAttack;
 
-    [SerializeField] private float chaseDistanceThreshold = 200f; // если игрок в радиусе то бежим к нему
-    [SerializeField] private float attackDistanceThreshold = 0.00001f; //если игрока можно ударить, то ударяем
+    /*[SerializeField] private float speed;*/
 
-    [SerializeField]
-    private float attackDelay = 1;
-    private float passTime = 1;
+    [SerializeField] private float chaseDistance = 1.5f; // если игрок в радиусе то бежим к нему
+    [SerializeField] private float attackDistance = 0.25f; //если игрока можно ударить, то ударяем
+
+    [SerializeField] private float attackCooldown;
+    private float lastAttackTime;
 
     public override void Start()
     {
@@ -25,22 +28,24 @@ public class EnemyAI : EnemyAttack
         {
             Vector3 targetPos = player.transform.position;
             float distance = Vector2.Distance(player.transform.position, gameObject.transform.position);
-            if (distance < chaseDistanceThreshold)
+            if (distance < chaseDistance)
             {
-                if (distance <= attackDistanceThreshold)
+                if (distance <= attackDistance)
                 {
                     //attack
+                    onMovementInput?.Invoke(Vector2.zero);
+                    if (Time.time - lastAttackTime > attackCooldown)
+                    {
+                        lastAttackTime = Time.time;
+                        onAttack?.Invoke();
+                    }
                 }
                 else
                 {
                     //chasing
                     Vector2 direction = player.transform.position - transform.position;
-                    transform.Translate(direction * speed * Time.deltaTime);
+                    onMovementInput?.Invoke(direction.normalized);
                 }
-            }
-            if (passTime < attackDelay)
-            {
-                passTime += Time.deltaTime;
             }
         }
     }

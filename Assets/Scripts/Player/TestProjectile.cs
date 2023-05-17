@@ -13,7 +13,8 @@ public class TestProjectile : MonoBehaviour
         {
             if(collision.GetComponent<Enemy>() != null)
             {
-                collision.GetComponent<Enemy>().DealDamage(damage);
+                Debug.Log(gameObject.layer);
+                collision.GetComponent<Enemy>().DealDamage(damage, gameObject.layer);
                 Destroy(gameObject);
             }
             if (collision.tag == "Wall")

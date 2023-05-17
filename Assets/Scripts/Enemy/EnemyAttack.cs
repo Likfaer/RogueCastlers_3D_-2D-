@@ -8,6 +8,6 @@ public class EnemyAttack : MonoBehaviour
 
     public virtual void Start()
     {
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        player = FindObjectOfType<PlayerInput>().gameObject;
     }
 }

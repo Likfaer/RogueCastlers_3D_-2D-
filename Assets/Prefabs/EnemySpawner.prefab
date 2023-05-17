@@ -47,6 +47,8 @@ MonoBehaviour:
   Enemies:
   - {fileID: 7735386923260028129, guid: 9283011e2017ce644a2e24c103cd8a9a, type: 3}
   SpawnRate: 4
+  player: {fileID: 7345736514443804586, guid: 060a819925d6bae49ab342c45f3f85fd, type: 3}
+  countEnemiesNow: 0
 --- !u!65 &2521603639535967037
 BoxCollider:
   m_ObjectHideFlags: 0

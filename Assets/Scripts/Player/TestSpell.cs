@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class TestSpell : MonoBehaviour
 {
     public GameObject projectile;
-    public float minDamage;
-    public float maxDamage;
-    public float projectileForce;
+    [SerializeField] public float minDamage;
+    [SerializeField] public float maxDamage;
+    [SerializeField] public float projectileForce;
 
-    public float attackCooldown;
-    private float lastAttackTime;
+    [SerializeField] public float attackCooldown;
+    [SerializeField] public float lastAttackTime;
 
-    public Text AttackText;
-    public Text AttackSpeedText;
+    [SerializeField] public Text AttackText;
+    [SerializeField] public Text AttackSpeedText;
 
     private void Start()
     {

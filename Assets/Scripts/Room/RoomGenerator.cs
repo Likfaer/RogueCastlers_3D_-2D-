@@ -64,8 +64,8 @@ public class RoomGenerator : MonoBehaviour
         //Enemies
 
 
-        //countEnemies = Mathf.RoundToInt(size.x * size.y / 9.6f);
-        countEnemies = 2;
+        countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
+        //countEnemies = 2;
 
         //Debug.Log("enemies in RoomGen: " + countEnemies);
 

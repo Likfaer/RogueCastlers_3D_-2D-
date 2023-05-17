@@ -74,7 +74,6 @@ public class WeaponParent : MonoBehaviour
         Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
         Gizmos.DrawSphere(position, radius);
     }
-
     public void DetectColliders()
     {
         foreach( Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
@@ -84,9 +83,9 @@ public class WeaponParent : MonoBehaviour
             {
                 if (collision.GetComponent<Enemy>() != null)
                 {
-                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage));
+                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage), gameObject.layer);
                 }
-                if (collision.GetComponent<TestEnemyProjectile>() != null)
+                if (collision.GetComponent<EnemyRangeCollision>() != null)
                 {
                     Destroy(collision.gameObject);
                 }

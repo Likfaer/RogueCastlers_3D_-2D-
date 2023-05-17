@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1242374288884036427}
   - component: {fileID: 157621229}
   - component: {fileID: 157621230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SwordTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,11 +241,13 @@ GameObject:
   - component: {fileID: 245632900486614308}
   - component: {fileID: 4456903146134066546}
   - component: {fileID: 8161732458319114508}
-  - component: {fileID: 8402467334966565793}
   - component: {fileID: 6330615785114283075}
   - component: {fileID: -569588700671894969}
   - component: {fileID: 1851107366}
+  - component: {fileID: 6621827564359105486}
+  - component: {fileID: 2483556830177551636}
   - component: {fileID: 1851107361}
+  - component: {fileID: 6738590296415383675}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -340,22 +342,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8402467334966565793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345736514443804586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17756d0886c88f74fbd28c9c4201a656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.75
-  speedText: {fileID: 0}
-  dashText: {fileID: 0}
-  dashRange: 0.5
 --- !u!61 &6330615785114283075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -421,7 +407,35 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &6621827564359105486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345736514443804586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4ee4c9cf84a2a41a86232e1805ff1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2483556830177551636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345736514443804586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e361cd0445707c4cba0d414aff95db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.75
+  acceleration: 50
+  deacceleration: 100
+  currentSpeed: 0
 --- !u!114 &1851107361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,3 +449,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7345736514443804586}
+--- !u!114 &6738590296415383675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345736514443804586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ca21191f4d19944944a0ec0c3ee432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.75
+  speedText: {fileID: 0}
+  dashText: {fileID: 0}
+  dashRange: 1
+  onMovementInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6621827564359105486}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: set_MovementInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPointerInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6621827564359105486}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: set_PointerInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6621827564359105486}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  movement: {fileID: -8531692085421843926, guid: 01a2b0a6642d61246ac76a7879f1400c, type: 3}
+  attack: {fileID: -8853596519766412965, guid: 01a2b0a6642d61246ac76a7879f1400c, type: 3}
+  pointerPosition: {fileID: -1896422363592774698, guid: 01a2b0a6642d61246ac76a7879f1400c, type: 3}
