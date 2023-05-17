@@ -17,6 +17,8 @@ public class EnemyAI : EnemyAttack
     [SerializeField] private float attackCooldown;
     private float lastAttackTime;
 
+    private bool PlayerLoss = true;
+
     public override void Start()
     {
         base.Start();
@@ -30,6 +32,7 @@ public class EnemyAI : EnemyAttack
             float distance = Vector2.Distance(player.transform.position, gameObject.transform.position);
             if (distance < chaseDistance)
             {
+                PlayerLoss = false;
                 if (distance <= attackDistance)
                 {
                     //attack
@@ -43,9 +46,19 @@ public class EnemyAI : EnemyAttack
                 else
                 {
                     //chasing
-                    Vector2 direction = player.transform.position - transform.position;
-                    onMovementInput?.Invoke(direction.normalized);
+                    if (PlayerLoss == false)
+                    {
+                        Vector2 direction = player.transform.position - transform.position;
+                        onMovementInput?.Invoke(direction.normalized);
+                    }
+                   
+                    
                 }
+            }
+            else
+            {
+                PlayerLoss = true;
+                onMovementInput?.Invoke(Vector2.zero);
             }
         }
     }

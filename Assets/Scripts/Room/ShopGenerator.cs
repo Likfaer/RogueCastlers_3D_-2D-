@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
-using static UnityEditorInternal.ReorderableList;
 
 public class ShopGenerator : MonoBehaviour
 {

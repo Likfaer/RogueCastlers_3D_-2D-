@@ -7,15 +7,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject settingsPanel;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public Animator transition;
 
+    public float transitionTime = 1f;
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadLevel(1));
     }
     public void OpenSettings()
     {
@@ -34,5 +32,11 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         
+    }
+    IEnumerator LoadLevel (int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield  return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
     }
 }
