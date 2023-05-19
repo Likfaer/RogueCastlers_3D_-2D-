@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static System.TimeZoneInfo;
 
-public class OverlayUI : MonoBehaviour
+public class OverlayUI : PlayerExist
 {
     private GameObject timerPanel;
     private Text timerNextText;
@@ -15,6 +15,7 @@ public class OverlayUI : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject deadMenuUI;
 
     public float transitionTime = 1f;
     public Animator transition;
@@ -30,7 +31,12 @@ public class OverlayUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        
+    }
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
@@ -40,6 +46,10 @@ public class OverlayUI : MonoBehaviour
             {
                 Pause();
             }
+        }
+        if (player == null)
+        {
+            deadMenuUI.SetActive(true);
         }
     }
     public void Resume()
@@ -54,7 +64,11 @@ public class OverlayUI : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-
+    public void LoadRestart()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(LoadLevel(1));
+    }
     public void LoadMenu()
     {
         Time.timeScale = 1f;

@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class PlayerExist : MonoBehaviour
 {
     protected GameObject player;
 
-    public virtual void Start()
+    private void Awake()
     {
         player = FindObjectOfType<PlayerInput>().gameObject;
+    }
+    public virtual void Start()
+    {
+        
+    }
+    public void FixedUpdate()
+    {
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShootingParent : EnemyAttack
+public class EnemyShootingParent : PlayerExist
 {
     public GameObject projectile;
     [SerializeField] private float minDamage;

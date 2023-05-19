@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyAI : EnemyAttack
+public class EnemyAI : PlayerExist
 {
     public UnityEvent<Vector2> onMovementInput, onPointerInput;
     public UnityEvent onAttack;
@@ -29,7 +29,7 @@ public class EnemyAI : EnemyAttack
         if (player != null)
         {
             Vector3 targetPos = player.transform.position;
-            float distance = Vector2.Distance(player.transform.position, gameObject.transform.position);
+            float distance = Vector2.Distance(targetPos, gameObject.transform.position);
             if (distance < chaseDistance)
             {
                 PlayerLoss = false;
@@ -48,7 +48,7 @@ public class EnemyAI : EnemyAttack
                     //chasing
                     if (PlayerLoss == false)
                     {
-                        Vector2 direction = player.transform.position - transform.position;
+                        Vector2 direction = targetPos - transform.position;
                         onMovementInput?.Invoke(direction.normalized);
                     }
                    
