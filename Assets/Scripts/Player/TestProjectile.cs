@@ -13,7 +13,7 @@ public class TestProjectile : MonoBehaviour
         {
             if(collision.GetComponent<Enemy>() != null)
             {
-                Debug.Log(gameObject.layer);
+                //Debug.Log(gameObject.layer);
                 collision.GetComponent<Enemy>().DealDamage(damage, gameObject.layer);
                 Destroy(gameObject);
             }

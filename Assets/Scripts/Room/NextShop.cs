@@ -4,28 +4,23 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NextShop : MonoBehaviour
+public class NextShop : PlayerExist
 {
+    public GameObject timerPanel;
+    public Text timerNextText;
+
     public float TeleportationDelay;
 
-    private bool inTrigger;
+    private bool inTrigger = false;
     private IEnumerator launchScriptCoroutine;
-
-    private GameObject UI_Overlay;
-    private Transform UItoPanel;
-    private GameObject timerPanel;
-    private Transform PaneltoText;
-    private Text timerNextText;
 
     public GameObject nextRoom;
 
-    void Start()
+    new void Start()
     {
-        UI_Overlay = GameObject.Find("UI_Overlay");
-        UItoPanel = UI_Overlay.transform.Find("TimerPanel");
-        timerPanel = UItoPanel.gameObject;
-        PaneltoText = timerPanel.transform.Find("TimerText");
-        timerNextText = PaneltoText.GetComponent<Text>();
+
+        timerPanel = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerPanel;
+        timerNextText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerNextText;
         timerNextText.text = "";
         timerPanel.SetActive(false);
     }
@@ -71,7 +66,6 @@ public class NextShop : MonoBehaviour
         {
             oldRG = GameObject.Find("RoomGenerator(Clone)");
         }
-        GameObject player = GameObject.Find("Player");
         Transform playerTP = player.transform;
         playerTP.position = new Vector3(0.175f, 0.25f, 0f);
         Destroy(oldRG);

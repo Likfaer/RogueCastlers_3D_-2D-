@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatToPlayer : MonoBehaviour
+public class FloatToPlayer : PlayerExist
 {
-    private GameObject player;
     public float speed;
     private float range;
 
-    void Start()
-    {
-        player = GameObject.Find("Player");    
-    }
 
      void Update()
     {

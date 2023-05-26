@@ -8,12 +8,20 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject settingsPanel;
 
-    public Animator transition;
+    public GameObject transitionObject;
 
     public float transitionTime = 1f;
-    public void StartGame()
+    public void StartMenu()
+    {
+        StartCoroutine(LoadLevel(0));
+    }
+    public void StartGameSelection()
     {
         StartCoroutine(LoadLevel(1));
+    }
+    public void StartGame()
+    {
+        StartCoroutine(LoadLevel(2));
     }
     public void OpenSettings()
     {
@@ -35,7 +43,8 @@ public class MainMenu : MonoBehaviour
     }
     IEnumerator LoadLevel (int levelIndex)
     {
-        transition.SetTrigger("Start");
+        transitionObject.SetActive(true);
+        transitionObject.GetComponent<Animator>().SetTrigger("Start");
         yield  return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
     }

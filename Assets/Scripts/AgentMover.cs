@@ -6,8 +6,8 @@ public class AgentMover : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     [SerializeField]
-    private float maxSpeed = 0.75f, acceleration = 50, deacceleration = 100;
-    [SerializeField]
+    public float maxSpeed = 0.75f;
+    private float acceleration = 50, deacceleration = 100;
     private float currentSpeed = 0;
 
     private Vector2 oldMovementInput;

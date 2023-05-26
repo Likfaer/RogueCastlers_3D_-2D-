@@ -29,11 +29,17 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+       
     }
     private void Start()
     {
-        getSpeedUI();
-        getDashUI();
+        if (GameObject.Find("UI_Overlay"))
+        {
+            speedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/SpeedText").GetComponent<Text>();
+            dashText = GameObject.Find("UI_Overlay/StatsPanel/Panel/DashText").GetComponent<Text>();
+            getSpeedUI();
+            getDashUI();
+        }
     }
     private void Update()
     {

@@ -76,7 +76,7 @@ public class EnemyWeaponParent : PlayerExist
     {
         foreach (Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
         {
-            Debug.Log(collision.name);
+            //Debug.Log(collision.name);
             if (collision.tag == "Player")
             {
                 PlayerStats.playerStats.DealDamage(UnityEngine.Random.Range(minDamage, maxDamage));

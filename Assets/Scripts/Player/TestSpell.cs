@@ -13,21 +13,27 @@ public class TestSpell : MonoBehaviour
     [SerializeField] public float attackCooldown;
     [SerializeField] public float lastAttackTime;
 
-    [SerializeField] public Text AttackText;
-    [SerializeField] public Text AttackSpeedText;
+    private Text AttackText;
+    private Text AttackSpeedText;
 
     private void Start()
     {
-        SetAttackUI();
-        SetAttackSpeedUI();
+        if (GameObject.Find("UI_Overlay"))
+        {
+            AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkDmgText").GetComponent<Text>();
+            AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkSpeedText").GetComponent<Text>();
+            SetAttackUI();
+            SetAttackSpeedUI();
+        }
+        
     }
     private void SetAttackUI()
     {
-        AttackText.text = "Atk: " + minDamage + " - " + maxDamage;
+        AttackText.text = "RAtkDmg: " + minDamage + " - " + maxDamage;
     }
     private void SetAttackSpeedUI()
     {
-        AttackSpeedText.text = "AtkS: " + attackCooldown;
+        AttackSpeedText.text = "RAtkS: " + attackCooldown;
     }
 
     void Update()

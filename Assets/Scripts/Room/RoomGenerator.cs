@@ -24,11 +24,6 @@ public class RoomGenerator : MonoBehaviour
     private int countEnemies;
     private int countRooms;
 
-    private GameObject UI_Overlay;
-    private Transform UItoPanel;
-    private GameObject EnemyPanel;
-    private Transform PaneltoTextEnemy;
-    private Transform PaneltoTextRoom;
     public Text EnemiesCountText;
     public Text RoomsCountText;
 
@@ -48,23 +43,18 @@ public class RoomGenerator : MonoBehaviour
 
         //UI_Overlay
 
-        UI_Overlay = GameObject.Find("UI_Overlay");
-        UItoPanel = UI_Overlay.transform.Find("EnemyPanel");
-        EnemyPanel = UItoPanel.gameObject;
-
-        PaneltoTextEnemy = EnemyPanel.transform.Find("EnemiesText");
-        EnemiesCountText = PaneltoTextEnemy.GetComponent<Text>();
+        EnemiesCountText = GameObject.Find("UI_Overlay/EnemyPanel/EnemiesText").GetComponent<Text>();
         EnemiesCountText.text = "";
 
-        PaneltoTextRoom = EnemyPanel.transform.Find("RoomsText");
-        RoomsCountText = PaneltoTextRoom.GetComponent<Text>();
+       
+        RoomsCountText = GameObject.Find("UI_Overlay/EnemyPanel/RoomsText").GetComponent<Text>();
         //RoomsCountText.text = "Room 0";
         getRoomCountUI();
         //Enemies
 
 
         countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
-        //countEnemies = 2;
+        //countEnemies = 0;
 
         //Debug.Log("enemies in RoomGen: " + countEnemies);
 

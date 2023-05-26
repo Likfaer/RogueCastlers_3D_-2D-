@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : PlayerExist
 {
     public List<GameObject> Enemies = new List<GameObject>();
     public float SpawnRate;
-    public GameObject player;
 
     GameObject EnemiesList;
     public int countEnemiesNow;
@@ -16,14 +15,10 @@ public class EnemySpawner : MonoBehaviour
     private float x, y;
     private Vector3 spawnPos;
     private float defaultX, defaultY;
-    void Start()
-    {
-        
-    }
+
     public void StartSpawn(int numEnemies, float DefX, float DefY)
     {
         EnemiesList = GameObject.Find("EnemiesList");
-        player = GameObject.Find("Player");
         defaultX = DefX;
         defaultY = DefY;
         //Debug.Log("enemies in StartSpawn: " + numEnemies);
@@ -43,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             if (player != null)
             {
                 int rand = Random.Range(0, Enemies.Count);
-                Debug.Log(rand);
+                //Debug.Log("Spawned enemy with id : " + rand);
                 GameObject Enemy = Instantiate(Enemies[rand], spawnPos, Quaternion.identity);
                 Enemy.transform.parent = EnemiesList.transform;
             }
@@ -59,10 +54,5 @@ public class EnemySpawner : MonoBehaviour
     public bool IsCoroutineRunning()
     {
         return isCoroutineRunning;
-    }
-    void Update()
-    {
-        player = GameObject.Find("Player");
-         
     }
 }

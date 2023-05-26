@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class WeaponParent : MonoBehaviour
@@ -21,9 +22,26 @@ public class WeaponParent : MonoBehaviour
     public Transform circleOrigin;
     public float radius;
 
+    private Text AttackText;
+    private Text AttackSpeedText;
+
     private void Start()
     {
-        
+        if (GameObject.Find("UI_Overlay"))
+        {
+            AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkDmgText").GetComponent<Text>();
+            AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkSpeedText").GetComponent<Text>();
+            SetAttackUI();
+            SetAttackSpeedUI();
+        }
+    }
+    private void SetAttackUI()
+    {
+        AttackText.text = "MAtkDmg: " + minDamage + " - " + maxDamage;
+    }
+    private void SetAttackSpeedUI()
+    {
+        AttackSpeedText.text = "MAtkS: " + attackCooldown;
     }
     private void Update()
     {
@@ -78,7 +96,7 @@ public class WeaponParent : MonoBehaviour
     {
         foreach( Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            Debug.Log(collision.name);
+            //Debug.Log(collision.name);
             if (collision.name != "Player")
             {
                 if (collision.GetComponent<Enemy>() != null)

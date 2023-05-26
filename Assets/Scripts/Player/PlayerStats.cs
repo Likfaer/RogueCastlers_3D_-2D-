@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
 
     public Text healthText;
     public Slider healthSlider;
-
+    
     public int coins;
     public int gems;
 
@@ -27,11 +27,15 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(playerStats);
         }
-        else 
-        { 
+        else
+        {
             playerStats = this;
         }
         //DontDestroyOnLoad(this);
+        healthText = GameObject.Find("UI_Overlay/UserPanel/HealthText").GetComponent<Text>();
+        healthSlider = GameObject.Find("UI_Overlay/UserPanel/HealthSlider").GetComponent<Slider>();
+        coinsValue = GameObject.Find("UI_Overlay/UserPanel/CoinsValue").GetComponent<Text>();
+        gemsValue = GameObject.Find("UI_Overlay/UserPanel/CoinsValue").GetComponent<Text>();
     }
     void Start()
     {
