@@ -21,6 +21,7 @@ public class Agent : MonoBehaviour
     
     private WeaponParent weaponParent;
     private EnemyWeaponParent EnemyWeaponParent;
+    private EnemyShootingParent EnemyRangeParent;
 
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
@@ -35,7 +36,14 @@ public class Agent : MonoBehaviour
         }
         else
         {
-            EnemyWeaponParent = GetComponentInChildren<EnemyWeaponParent>();
+            if(gameObject.GetComponent<EnemyAI>().ranged)
+            {
+                EnemyRangeParent = GetComponent<EnemyShootingParent>();
+            }
+            else
+            {
+                EnemyWeaponParent = GetComponentInChildren<EnemyWeaponParent>();
+            }
         }
         
         agentMover = GetComponent<AgentMover>();
@@ -54,7 +62,14 @@ public class Agent : MonoBehaviour
         }
         else
         {
-            EnemyWeaponParent.Attack();
+            if (gameObject.GetComponent<EnemyAI>().ranged)
+            {
+                EnemyRangeParent.Attack();
+            }
+            else
+            {
+                EnemyWeaponParent.Attack();
+            }
         }
     }
     

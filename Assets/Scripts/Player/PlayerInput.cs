@@ -9,7 +9,6 @@ using UnityEngine.UIElements.Experimental;
 public class PlayerInput : MonoBehaviour
 {
     private Vector2 targetPos;
-    public float speed;
     private Vector2 direction;
     private Animator animator;
     private bool UpDown, LeftRight;
@@ -55,10 +54,9 @@ public class PlayerInput : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
-
     private void getSpeedUI()
     {
-        speedText.text = "Speed: " + speed.ToString();
+        speedText.text = "Speed: " + gameObject.GetComponent<AgentMover>().maxSpeed.ToString();
     }
     private void getDashUI()
     {
@@ -140,7 +138,7 @@ public class PlayerInput : MonoBehaviour
 
             if (hit.collider != null && hit.collider.CompareTag("Wall"))
             {
-                Debug.Log(dashVector);
+                //Debug.Log(dashVector);
                 dashVector = targetPos * (dashRange * 0.05f);
             }
 
@@ -153,9 +151,18 @@ public class PlayerInput : MonoBehaviour
 
     private void SetAnimatorMovement(Vector2 direction)
     {
+        //Debug.Log(direction);
         animator.SetLayerWeight(1, 1);
-        animator.SetFloat("xDir", direction.x);
-        animator.SetFloat("yDir", direction.y);
+        if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+        {
+            animator.SetFloat("xDir", direction.x);
+            animator.SetFloat("yDir", 0);
+        }
+        else
+        {
+            animator.SetFloat("xDir", 0);
+            animator.SetFloat("yDir", direction.y);
+        }
         animator.SetBool("LeftRight", LeftRight);
         animator.SetBool("UpDown", UpDown);
     }

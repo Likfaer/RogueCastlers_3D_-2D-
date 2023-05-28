@@ -17,14 +17,13 @@ public class PlayerSpawner : MonoBehaviour
 
         if (CharacterSelector.instance == null)
         {
-            Debug.Log("unselected");
+            //Debug.Log("unselected");
             NakedPlayer.transform.Find("WeaponParent").gameObject.SetActive(true);
             NakedPlayer.transform.Find("RangeParent").gameObject.SetActive(true);
         }
         else
         {
-            Debug.Log("was selected");
-            Debug.Log(CharacterSelector.instance.selectedStrObject);
+            //Debug.Log(CharacterSelector.instance.selectedStrObject);
 
             switch (CharacterSelector.instance.selectedStrObject)
             {
@@ -59,7 +58,7 @@ public class PlayerSpawner : MonoBehaviour
 
 
                 default:
-                    Debug.Log("4to-to ne tak");
+                    //Debug.Log("4to-to ne tak");
                     //Base Activations
                     NakedPlayer.transform.Find("WeaponParent").gameObject.SetActive(true);
                     NakedPlayer.transform.Find("RangeParent").gameObject.SetActive(true);

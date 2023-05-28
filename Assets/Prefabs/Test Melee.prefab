@@ -620,7 +620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990924747782166127}
-  - component: {fileID: 3707246241972751929}
+  - component: {fileID: -3132822756950999706}
   - component: {fileID: 3816870512892419628}
   - component: {fileID: 4734451808895819783}
   - component: {fileID: 9217915646480132679}
@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 1495427177532222236}
   - component: {fileID: -8198424776546447006}
   - component: {fileID: 530524466}
+  - component: {fileID: 6512215345873549013}
   m_Layer: 7
   m_Name: Test Melee
   m_TagString: TestoEnemy
@@ -651,7 +652,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3707246241972751929
+--- !u!95 &-3132822756950999706
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -659,9 +660,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7735386923260028129}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1831b52a343dc2449ba22da130ecac50, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11c937f6f3ba0f842a085e570b44cde2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -697,9 +698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.45
-  acceleration: 50
-  deacceleration: 100
-  currentSpeed: 0
 --- !u!212 &9217915646480132679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -854,6 +852,7 @@ MonoBehaviour:
   chaseDistance: 1.25
   attackDistance: 0.2
   attackCooldown: 2
+  ranged: 0
 --- !u!50 &530524466
 Rigidbody2D:
   serializedVersion: 4
@@ -866,15 +865,84 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6512215345873549013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735386923260028129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7eafa8dc7f09634483840f0b7f79f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 530524466}
+  strength: 2.25
+  delay: 0.15
+  onBegin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8198424776546447006}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4734451808895819783}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8198424776546447006}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4734451808895819783}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &9064103737921908406
 GameObject:
   m_ObjectHideFlags: 0

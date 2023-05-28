@@ -101,7 +101,7 @@ public class WeaponParent : MonoBehaviour
             {
                 if (collision.GetComponent<Enemy>() != null)
                 {
-                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage), gameObject.layer);
+                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage), gameObject);
                 }
                 if (collision.GetComponent<EnemyRangeCollision>() != null)
                 {

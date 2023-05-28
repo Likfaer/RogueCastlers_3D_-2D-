@@ -51,7 +51,7 @@ public class CharacterSelectorUI : MonoBehaviour
                 characterPrefab.transform.Find("RangeParent").gameObject.SetActive(true);
                 break;
             default:
-                Debug.Log("4to-to ne tak");
+                //Debug.Log("4to-to ne tak");
                 break;
         }
     }

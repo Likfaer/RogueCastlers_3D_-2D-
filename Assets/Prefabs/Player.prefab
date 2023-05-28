@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ca21191f4d19944944a0ec0c3ee432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.75
+  speed: 2
   speedText: {fileID: 0}
   dashText: {fileID: 0}
   dashRange: 1

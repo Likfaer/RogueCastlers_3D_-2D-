@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUpgrades : MonoBehaviour
+public class PlayerUpgrades : PlayerExist
 {
-    public GameObject player;
-    private void Start()
-    {
-        
-    }
 
     //Upgrades
     public void MeleeAttackDamageUpgrade(float value)
@@ -31,7 +26,7 @@ public class PlayerUpgrades : MonoBehaviour
     }
     public void SpeedUpgrade(float value)
     {
-        player.GetComponent<PlayerInput>().speed += value;
+        player.GetComponent<AgentMover>().maxSpeed += value;
     }
 
     //Degrades
@@ -55,6 +50,6 @@ public class PlayerUpgrades : MonoBehaviour
     }
     public void SpeedReduce(float value)
     {
-        player.GetComponent<PlayerInput>().speed -= value;
+        player.GetComponent<AgentMover>().maxSpeed -= value;
     }
 }

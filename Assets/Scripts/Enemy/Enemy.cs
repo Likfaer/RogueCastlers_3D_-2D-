@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +18,19 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
     }
-    public void DealDamage(float damage, int layer)
+    public void DealDamage(float damage, GameObject sender)
     {
-        if (layer == gameObject.layer)
+        if (sender.layer == gameObject.layer)
             return;
         healthBar.SetActive(true);
         health -= damage;
+
+        if (sender.name == "WeaponParent")
+        {
+            //Debug.Log("calling knockback");
+            gameObject.GetComponent<Knockback>().PlayFeedback(sender);
+        }
+
         CheckDeath();
         healthBarSlider.value = CalculateHealthPercentage();
     }

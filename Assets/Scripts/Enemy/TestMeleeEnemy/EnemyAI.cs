@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements.Experimental;
 
 public class EnemyAI : PlayerExist
 {
@@ -15,13 +16,20 @@ public class EnemyAI : PlayerExist
     [SerializeField] private float attackDistance = 0.25f; //если игрока можно ударить, то ударяем
 
     [SerializeField] private float attackCooldown;
+    [SerializeField] public bool ranged;
     private float lastAttackTime;
 
     private bool PlayerLoss = true;
 
+    // animation
+    private Animator animator;
+    Vector2 direction;
+    private bool UpDown, LeftRight;
+
     public override void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -35,6 +43,7 @@ public class EnemyAI : PlayerExist
                 PlayerLoss = false;
                 if (distance <= attackDistance)
                 {
+                    animator.SetLayerWeight(1, 0);
                     //attack
                     onMovementInput?.Invoke(Vector2.zero);
                     if (Time.time - lastAttackTime > attackCooldown)
@@ -48,18 +57,38 @@ public class EnemyAI : PlayerExist
                     //chasing
                     if (PlayerLoss == false)
                     {
-                        Vector2 direction = targetPos - transform.position;
+                        animator.SetBool("Stay", false);
+                        direction = targetPos - transform.position;
+                        SetAnimatorMovement(direction);
+                        //Debug.Log(direction);
                         onMovementInput?.Invoke(direction.normalized);
                     }
-                   
-                    
                 }
             }
             else
             {
                 PlayerLoss = true;
                 onMovementInput?.Invoke(Vector2.zero);
+                animator.SetBool("Stay", true);
             }
         }
+        
     }
+    private void SetAnimatorMovement(Vector2 direction)
+    {
+        animator.SetLayerWeight(1, 1);
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            animator.SetFloat("xDir", direction.x);
+            animator.SetFloat("yDir", 0);
+        }
+        else
+        {
+            animator.SetFloat("xDir", 0);
+            animator.SetFloat("yDir", direction.y);
+        }
+        animator.SetBool("LeftRight", LeftRight);
+        animator.SetBool("UpDown", UpDown);
+    }
+
 }

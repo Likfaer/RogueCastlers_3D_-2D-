@@ -48,8 +48,6 @@ MonoBehaviour:
     name: Melee
   - prefab: {fileID: 7345736514443804586, guid: 060a819925d6bae49ab342c45f3f85fd, type: 3}
     name: Range
-  - prefab: {fileID: 0}
-    name: 
   - prefab: {fileID: 7345736514443804586, guid: 060a819925d6bae49ab342c45f3f85fd, type: 3}
     name: Temp
   selectedStrObject: 
