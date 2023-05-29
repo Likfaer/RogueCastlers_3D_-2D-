@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class ShopGenerator : MonoBehaviour
@@ -19,7 +18,7 @@ public class ShopGenerator : MonoBehaviour
     public GameObject nextRoomButton;
 
     // buffs
-    public GameObject rangeDamageBuff, rangeAttackspeedBuff, speedBuff, healthBuff;
+    public List<GameObject> lootItems = new List<GameObject>();
 
 
     //overlay
@@ -58,7 +57,6 @@ public class ShopGenerator : MonoBehaviour
         //RoomsCountText.text = "Room 0";
         getRoomCountUI();
 
-
         //room-collision
         //floor
         for (int i = 0; i < size.x; i++)
@@ -69,6 +67,29 @@ public class ShopGenerator : MonoBehaviour
             }
         }
         Walls();
+        // Items
+        List<GameObject> possibleItems = new List<GameObject>();
+        foreach (GameObject item in lootItems)
+        {
+            float randomnow = Random.Range(1, 100);
+            Debug.Log(randomnow + " >= " + item.GetComponent<Loot>().dropChance + " ?");
+            if (randomnow >= item.GetComponent<Loot>().dropChance)
+            {
+                possibleItems.Add(item);
+            }
+        }
+        if (possibleItems.Count == 0) { Debug.Log("анлак.."); }
+        else
+        {
+            int itemscount = 0;
+            foreach (GameObject item in possibleItems)
+            {
+                if (size.x < itemscount)
+                    break;
+                GameObject lootGameObject = Instantiate(item, new Vector3((transform.position.x + itemscount + 1) * offset.x, (transform.position.y + 1) * offset.y, 0), Quaternion.identity, transform);
+                itemscount++;
+            }
+        }
 
         //Teleports
         nextRoomButton = Instantiate(nextRoomButton, new Vector3(0.25f, size.y * 0.25f + 0.5f, 0), Quaternion.identity, transform);

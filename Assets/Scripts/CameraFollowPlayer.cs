@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraFollowPlayer : PlayerExist
 {
-    public float smoothing;
-    public Vector3 offset;
+    [SerializeField] private float smoothing;
+    [SerializeField] private Vector3 offset;
 
     void FixedUpdate()
     {

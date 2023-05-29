@@ -3,23 +3,23 @@ guid: 87425f73545397f41a7e5173a6e663c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4488449192292568241
-    second: spr_enemy_down_strip6_0
+      213: -671597386216550158
+    second: spr_nextroom_0
   - first:
-      213: 7640535961368522123
-    second: spr_enemy_down_strip6_1
+      213: -8942045754943266878
+    second: spr_nextroom_1
   - first:
-      213: -6482771759221085713
-    second: spr_enemy_down_strip6_2
+      213: -5829602869575564787
+    second: spr_nextroom_2
   - first:
-      213: 4233703895230637060
-    second: spr_enemy_down_strip6_3
+      213: -684243616110306676
+    second: spr_nextroom_3
   - first:
-      213: -1926824899631547748
-    second: spr_enemy_down_strip6_4
+      213: -576378549512427646
+    second: spr_nextroom_4
   - first:
-      213: 6484488382739756090
-    second: spr_enemy_down_strip6_5
+      213: -385790181994709219
+    second: spr_nextroom_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_0
+      name: spr_nextroom_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +118,20 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bcccf272cc2a4e30800000000000000
-      internalID: 4488449192292568241
+      spriteID: 2f05b7a4cb10ea6f0800000000000000
+      internalID: -671597386216550158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_1
+      name: spr_nextroom_1
       rect:
         serializedVersion: 2
         x: 14
@@ -139,20 +139,20 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8de7feb9f2a80a60800000000000000
-      internalID: 7640535961368522123
+      spriteID: 2cf115b43c877e380800000000000000
+      internalID: -8942045754943266878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_2
+      name: spr_nextroom_2
       rect:
         serializedVersion: 2
         x: 28
@@ -160,20 +160,20 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe961b3ae619806a0800000000000000
-      internalID: -6482771759221085713
+      spriteID: d02c951a317191fa0800000000000000
+      internalID: -5829602869575564787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_3
+      name: spr_nextroom_3
       rect:
         serializedVersion: 2
         x: 42
@@ -181,20 +181,20 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 404e867f24321ca30800000000000000
-      internalID: 4233703895230637060
+      spriteID: c8a9ae17e041186f0800000000000000
+      internalID: -684243616110306676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_4
+      name: spr_nextroom_4
       rect:
         serializedVersion: 2
         x: 56
@@ -202,20 +202,20 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9a751966fa8245e0800000000000000
-      internalID: -1926824899631547748
+      spriteID: 287282453ca4008f0800000000000000
+      internalID: -576378549512427646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_down_strip6_5
+      name: spr_nextroom_5
       rect:
         serializedVersion: 2
         x: 70
@@ -223,26 +223,22 @@ TextureImporter:
         width: 14
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a34b95be3d78df950800000000000000
-      internalID: 6484488382739756090
+      spriteID: d1f3f5c9fd565aaf0800000000000000
+      internalID: -385790181994709219
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: -40.04479, y: -8.619468}
-      - {x: -40.007694, y: 8.635479}
-      - {x: -29.724525, y: 8.646803}
-      - {x: -29.776775, y: -8.608736}
+    outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 6ae2ab1469e1600408593ea92d734eca
     internalID: 0
     vertices: []
     indices: 

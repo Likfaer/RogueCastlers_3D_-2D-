@@ -11,7 +11,6 @@ public class NextShop : PlayerExist
 
     public float TeleportationDelay;
 
-    private bool inTrigger = false;
     private IEnumerator launchScriptCoroutine;
 
     public GameObject nextRoom;
@@ -29,7 +28,6 @@ public class NextShop : PlayerExist
     {
         if (other.CompareTag("Player"))
         {
-            inTrigger = true;
             timerPanel.SetActive(true);
             if (launchScriptCoroutine != null)
             {
@@ -44,7 +42,6 @@ public class NextShop : PlayerExist
     {
         if (other.CompareTag("Player"))
         {
-            inTrigger = false;
             timerPanel.SetActive(false);
             // If coroutine is still running, stop it
             if (launchScriptCoroutine != null)

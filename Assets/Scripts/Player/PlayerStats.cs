@@ -55,12 +55,12 @@ public class PlayerStats : MonoBehaviour
         CheckOverheal();
         SetHealthUI();
     }
-    private void SetHealthUI()
+    public void SetHealthUI()
     {
         healthSlider.value = CalculateHealthPercentage();
         healthText.text = Mathf.Ceil(health).ToString() + " / " + Mathf.Ceil(maxHealth).ToString();
     }
-    private void CheckOverheal()
+    public void CheckOverheal()
     {
         if (health > maxHealth)
         {
@@ -81,15 +81,14 @@ public class PlayerStats : MonoBehaviour
         return (health / maxHealth);
     }
 
-    public void AddCurrency(CurrencyPickUp currency)
+    public void AddCurrency(CurrencyChange currency)
     {
-        if (currency.currentObject == CurrencyPickUp.pickupObject.COIN)
+        if (currency.currentObject == CurrencyChange.pickupObject.COIN)
         {
             coins += currency.pickupQuantity;
             coinsValue.text = "Coins:" + coins.ToString();
-
         }
-        else if (currency.currentObject == CurrencyPickUp.pickupObject.GEM)
+        else if (currency.currentObject == CurrencyChange.pickupObject.GEM)
         {
             gems += currency.pickupQuantity;
             gemsValue.text = "Gems:" + gems.ToString();

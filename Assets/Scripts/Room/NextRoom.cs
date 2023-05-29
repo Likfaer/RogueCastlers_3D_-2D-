@@ -10,9 +10,9 @@ public class NextRoom : PlayerExist
     public GameObject timerPanel;
     public Text timerNextText;
 
-    public float TeleportationDelay;
+    [SerializeField]
+    private float TeleportationDelay;
 
-    private bool inTrigger = false;
     private IEnumerator launchScriptCoroutine;
 
     public GameObject nextRoom;
@@ -28,7 +28,6 @@ public class NextRoom : PlayerExist
     {
         if (other.CompareTag("Player"))
         {
-            inTrigger = true;
             timerPanel.SetActive(true);
             if (launchScriptCoroutine != null)
             {
@@ -43,7 +42,6 @@ public class NextRoom : PlayerExist
     {
         if (other.CompareTag("Player"))
         {
-            inTrigger = false;
             timerPanel.SetActive(false);
             // If coroutine is still running, stop it
             if (launchScriptCoroutine != null)

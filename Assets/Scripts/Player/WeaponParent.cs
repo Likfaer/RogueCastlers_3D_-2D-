@@ -31,16 +31,12 @@ public class WeaponParent : MonoBehaviour
         {
             AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkDmgText").GetComponent<Text>();
             AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkSpeedText").GetComponent<Text>();
-            SetAttackUI();
-            SetAttackSpeedUI();
+            SetUI();
         }
     }
-    private void SetAttackUI()
+    public void SetUI()
     {
         AttackText.text = "MAtkDmg: " + minDamage + " - " + maxDamage;
-    }
-    private void SetAttackSpeedUI()
-    {
         AttackSpeedText.text = "MAtkS: " + attackCooldown;
     }
     private void Update()
@@ -96,12 +92,14 @@ public class WeaponParent : MonoBehaviour
     {
         foreach( Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            //Debug.Log(collision.name);
+            Debug.Log(collision.name);
             if (collision.name != "Player")
             {
                 if (collision.GetComponent<Enemy>() != null)
                 {
-                    collision.GetComponent<Enemy>().DealDamage(UnityEngine.Random.Range(minDamage, maxDamage), gameObject);
+                    float abc = UnityEngine.Random.Range(minDamage, maxDamage);
+                    Debug.Log("dmg" + abc);
+                    collision.GetComponent<Enemy>().DealDamage(abc, gameObject);
                 }
                 if (collision.GetComponent<EnemyRangeCollision>() != null)
                 {

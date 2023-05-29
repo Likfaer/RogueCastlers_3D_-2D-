@@ -9,15 +9,10 @@ public class EnemyWeaponParent : PlayerExist
 {
     public SpriteRenderer characterRenderer, weaponRenderer;
 
-    public Vector3 MousePos { get; set; }
+    [SerializeField]
+    private float minDamage, maxDamage, attackCooldown;
 
-    public float minDamage;
-    public float maxDamage;
-    public float attackCooldown;
-    private float lastAttackTime;
     public Animator animator;
-
-    private bool attackBlocked;
 
     public Transform circleOrigin;
     public float radius;

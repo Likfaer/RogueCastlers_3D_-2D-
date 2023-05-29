@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2584158855478673932}
+  - component: {fileID: 7011509816604931012}
   - component: {fileID: 2584158855478673935}
   - component: {fileID: 2584158855478673934}
   - component: {fileID: 9044637411879382711}
@@ -33,6 +34,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7011509816604931012
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584158855478673921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29d0353f79dcf954e98714143c3d0fea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &2584158855478673935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -122,5 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86984e356cddf4e4fb894a64535e5e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerPanel: {fileID: 0}
+  timerNextText: {fileID: 0}
   TeleportationDelay: 2
   nextRoom: {fileID: 1930163357639608869, guid: 3950da75c8af8004aaaf7fa389690acb, type: 3}

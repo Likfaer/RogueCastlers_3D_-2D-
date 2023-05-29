@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class EnemySpawner : PlayerExist
 {
-    public List<GameObject> Enemies = new List<GameObject>();
-    public float SpawnRate;
+    [SerializeField] private List<GameObject> Enemies = new List<GameObject>();
+    [SerializeField] private float SpawnRate;
 
     GameObject EnemiesList;
     public int countEnemiesNow;

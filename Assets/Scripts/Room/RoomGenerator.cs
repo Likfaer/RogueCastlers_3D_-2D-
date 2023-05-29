@@ -20,7 +20,6 @@ public class RoomGenerator : MonoBehaviour
 
     //overlay
     EnemySpawner spawner;
-    private Vector3 spawnPos;
     private int countEnemies;
     private int countRooms;
 
@@ -37,9 +36,6 @@ public class RoomGenerator : MonoBehaviour
         countRooms = PlayerPrefs.GetInt("RoomsCount");
         //room-size
         setRoomSize();
-        //enemies
-
-        spawner = GetComponent<EnemySpawner>();
 
         //UI_Overlay
 
@@ -50,14 +46,7 @@ public class RoomGenerator : MonoBehaviour
         RoomsCountText = GameObject.Find("UI_Overlay/EnemyPanel/RoomsText").GetComponent<Text>();
         //RoomsCountText.text = "Room 0";
         getRoomCountUI();
-        //Enemies
-
-
-        countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
-        //countEnemies = 0;
-
-        //Debug.Log("enemies in RoomGen: " + countEnemies);
-
+        
         //room-collision
         //floor
         for (int i = 0; i < size.x; i++)
@@ -68,8 +57,14 @@ public class RoomGenerator : MonoBehaviour
             }
         }
         Walls();
-        //enemies
 
+        //Enemies
+        spawner = GetComponent<EnemySpawner>();
+
+        //countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
+        countEnemies = 2;
+
+        //Debug.Log("enemies in RoomGen: " + countEnemies);
         spawner.StartSpawn(countEnemies, size.x, size.y);
 
         //Teleports

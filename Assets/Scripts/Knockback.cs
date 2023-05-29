@@ -5,10 +5,8 @@ using UnityEngine.Events;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D rb2d;
-    [SerializeField]
-    float strength = 1, delay = 0.15f;
+    public Rigidbody2D rb2d;
+    public float minStrength = 0.5f, Maxstrength = 1, delay = 0.15f;
 
     public UnityEvent onBegin, onDone;
 
@@ -18,7 +16,8 @@ public class Knockback : MonoBehaviour
         onBegin?.Invoke();
         Vector2 direction = (transform.position - sender.transform.position).normalized;
         //Debug.Log(direction);
-        rb2d.AddForce(direction * strength, ForceMode2D.Impulse);
+        
+        rb2d.AddForce(direction * Random.Range(minStrength, Maxstrength), ForceMode2D.Impulse);
         StartCoroutine(Reset());
     }
 

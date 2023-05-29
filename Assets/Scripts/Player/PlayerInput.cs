@@ -36,8 +36,7 @@ public class PlayerInput : MonoBehaviour
         {
             speedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/SpeedText").GetComponent<Text>();
             dashText = GameObject.Find("UI_Overlay/StatsPanel/Panel/DashText").GetComponent<Text>();
-            getSpeedUI();
-            getDashUI();
+            SetUI();
         }
     }
     private void Update()
@@ -54,12 +53,9 @@ public class PlayerInput : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
-    private void getSpeedUI()
+    public void SetUI()
     {
         speedText.text = "Speed: " + gameObject.GetComponent<AgentMover>().maxSpeed.ToString();
-    }
-    private void getDashUI()
-    {
         dashText.text = "Dash: " + dashRange.ToString();
     }
     private void Move()

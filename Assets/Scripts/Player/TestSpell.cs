@@ -22,17 +22,12 @@ public class TestSpell : MonoBehaviour
         {
             AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkDmgText").GetComponent<Text>();
             AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkSpeedText").GetComponent<Text>();
-            SetAttackUI();
-            SetAttackSpeedUI();
+            SetUI();
         }
-        
     }
-    private void SetAttackUI()
+    public void SetUI()
     {
         AttackText.text = "RAtkDmg: " + minDamage + " - " + maxDamage;
-    }
-    private void SetAttackSpeedUI()
-    {
         AttackSpeedText.text = "RAtkS: " + attackCooldown;
     }
 
@@ -50,7 +45,7 @@ public class TestSpell : MonoBehaviour
             Vector3 myPos = transform.position;
             Vector3 dir = (mousePos - myPos).normalized;
             spell.GetComponent<Rigidbody2D>().velocity = dir * projectileForce;
-            spell.GetComponent<TestProjectile>().damage = Random.Range(minDamage,maxDamage);
+            spell.GetComponent<RangeCollision>().damage = Random.Range(minDamage,maxDamage);
         }
     }
 }
