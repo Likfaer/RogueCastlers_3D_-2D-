@@ -55,6 +55,9 @@ MonoBehaviour:
   nextRoomButton: {fileID: 2584158855478673921, guid: 8e06429e0a7dbe04481ea5c55a79ef4f, type: 3}
   lootItems:
   - {fileID: 65185738072793730, guid: 6e862bda15a7a1c458e5662c34589571, type: 3}
-  - {fileID: 65185738072793730, guid: 6e862bda15a7a1c458e5662c34589571, type: 3}
+  - {fileID: 65185738072793730, guid: 9e2428728803b284180a3bc0eb9b22ad, type: 3}
+  - {fileID: 65185738072793730, guid: 24b6f6817929c154da56a5188a4d2b73, type: 3}
+  - {fileID: 65185738072793730, guid: a1a26467a03d58247b560fb418e211ff, type: 3}
+  - {fileID: 65185738072793730, guid: d2f14b092d1884240ac8db6fb99a7957, type: 3}
   EnemiesCountText: {fileID: 0}
   RoomsCountText: {fileID: 0}

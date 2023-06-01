@@ -55,6 +55,12 @@ public class PlayerStats : MonoBehaviour
         CheckOverheal();
         SetHealthUI();
     }
+    public void MaxHPChange(float value)
+    {
+        maxHealth += value;
+        CheckOverheal();
+        SetHealthUI();
+    }
     public void SetHealthUI()
     {
         healthSlider.value = CalculateHealthPercentage();

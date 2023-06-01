@@ -72,8 +72,8 @@ public class ShopGenerator : MonoBehaviour
         foreach (GameObject item in lootItems)
         {
             float randomnow = Random.Range(1, 100);
-            Debug.Log(randomnow + " >= " + item.GetComponent<Loot>().dropChance + " ?");
-            if (randomnow >= item.GetComponent<Loot>().dropChance)
+            Debug.Log(item.GetComponent<Loot>().dropChance  + " >= " + randomnow + " ?");
+            if (item.GetComponent<Loot>().dropChance >= randomnow)
             {
                 possibleItems.Add(item);
             }

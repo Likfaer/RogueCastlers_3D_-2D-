@@ -537,10 +537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7743105269372270643, guid: d492a44ffb9045a4bb2143d16b892cd8, type: 3}
-  minDamage: 3
-  maxDamage: 8
+  minDamage: 5
+  maxDamage: 5
   projectileForce: 0.5
-  cooldown: 2
 --- !u!1 &7735386923260028129
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +835,7 @@ MonoBehaviour:
         m_CallState: 2
   chaseDistance: 2
   attackDistance: 1
-  attackCooldown: 1
+  attackCooldown: 0.75
   ranged: 1
 --- !u!114 &761836037
 MonoBehaviour:
@@ -851,10 +850,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7743105269372270643, guid: d492a44ffb9045a4bb2143d16b892cd8, type: 3}
-  minDamage: 3
-  maxDamage: 8
-  projectileForce: 0.5
-  cooldown: 2
+  minDamage: 5
+  maxDamage: 10
+  projectileForce: 0.75
 --- !u!114 &7252245719071141624
 MonoBehaviour:
   m_ObjectHideFlags: 0

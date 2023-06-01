@@ -70,7 +70,6 @@ public class PlayerInput : MonoBehaviour
         {
             animator.SetLayerWeight(1, 0);
         }
-
     }
     private void TakeInput()
     {
@@ -137,11 +136,8 @@ public class PlayerInput : MonoBehaviour
                 //Debug.Log(dashVector);
                 dashVector = targetPos * (dashRange * 0.05f);
             }
-
             // Perform the dash
             transform.Translate(dashVector);
-
-
         }
     }
 

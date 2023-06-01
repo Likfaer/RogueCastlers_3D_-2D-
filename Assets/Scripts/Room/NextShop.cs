@@ -17,7 +17,6 @@ public class NextShop : PlayerExist
 
     new void Start()
     {
-
         timerPanel = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerPanel;
         timerNextText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerNextText;
         timerNextText.text = "";
