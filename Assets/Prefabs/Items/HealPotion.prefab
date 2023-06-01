@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a58818a54778d741bf5d4264ec5157b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 100
+  dropChance: 85
 --- !u!114 &-3651828755636762217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +179,21 @@ MonoBehaviour:
       - m_Target: {fileID: 7146649368158305636}
         m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
         m_MethodName: CurrentHealthChange
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEnterTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7146649368158305636}
+        m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
+        m_MethodName: SetUI
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

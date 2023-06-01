@@ -19,14 +19,14 @@ public class CurrencyChange : PlayerExist
 
     private GameObject UpgradePanel;
     private Text UpgradeNameText;
-    private Text UpgradeValueText;
+    //private Text UpgradeValueText;
     private Text UpgradeCostText;
 
     new private void Start()
     {
         UpgradePanel = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradePanel;
         UpgradeNameText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeNameText;
-        UpgradeValueText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeValueText;
+        //UpgradeValueText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeValueText;
         UpgradeCostText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeCostText;
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -44,13 +44,9 @@ public class CurrencyChange : PlayerExist
             {
                 float EventCounts = gameObject.GetComponent<PlayerUpgrades>().onPickUp.GetPersistentEventCount();
 
-                UpgradeNameText.text = gameObject.GetComponent<PlayerUpgrades>().onPickUp.GetPersistentMethodName(0);
-                
+                UpgradeNameText.text = gameObject.name;
 
-                UpgradeValueText.text = "NO VALUE";
-
-
-
+                gameObject.GetComponent<PlayerUpgrades>().onEnterTrigger?.Invoke();
 
 
                 UpgradeCostText.text = pickupQuantity.ToString();

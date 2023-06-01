@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e361cd0445707c4cba0d414aff95db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.1
+  maxSpeed: 0.25
 --- !u!212 &9217915646480132679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -776,6 +776,7 @@ MonoBehaviour:
   healthBar: {fileID: 1451784998}
   healthBarSlider: {fileID: 1451785000}
   lootDrop: {fileID: 5887662632356841413, guid: b16eda1567711ab40878d97a749e1bc8, type: 3}
+  lootValue: 1
 --- !u!114 &3260740681236966895
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,11 +12,19 @@ public class Enemy : MonoBehaviour
     public GameObject healthBar;
     public Slider healthBarSlider;
 
-    public GameObject lootDrop;
+    [SerializeField] private GameObject lootDrop;
+    [SerializeField] private int lootValue;
 
     void Start()
     {
+        IncreasePerRoom();
         health = maxHealth;
+    }
+    public void IncreasePerRoom()
+    {
+        int hardExpand = PlayerPrefs.GetInt("RoomsCount");
+        maxHealth = maxHealth * (1 + hardExpand * 0.02f);
+        Debug.Log("maxHealthNow" + maxHealth);
     }
     public void DealDamage(float damage, GameObject sender)
     {
@@ -54,6 +62,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             GameObject loot = Instantiate(lootDrop, transform.position,Quaternion.identity);
+            loot.GetComponent<CurrencyChange>().pickupQuantity = lootValue;
             loot.transform.parent = GameObject.Find("DropList").transform;
         }
     }

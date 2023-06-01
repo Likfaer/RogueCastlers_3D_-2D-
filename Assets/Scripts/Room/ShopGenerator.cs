@@ -72,7 +72,7 @@ public class ShopGenerator : MonoBehaviour
         foreach (GameObject item in lootItems)
         {
             float randomnow = Random.Range(1, 100);
-            Debug.Log(item.GetComponent<Loot>().dropChance  + " >= " + randomnow + " ?");
+            //Debug.Log(item.GetComponent<Loot>().dropChance  + " >= " + randomnow + " ?");
             if (item.GetComponent<Loot>().dropChance >= randomnow)
             {
                 possibleItems.Add(item);
@@ -81,12 +81,12 @@ public class ShopGenerator : MonoBehaviour
         if (possibleItems.Count == 0) { Debug.Log("анлак.."); }
         else
         {
-            int itemscount = 0;
+            int itemscount = 1;
             foreach (GameObject item in possibleItems)
             {
-                if (size.x < itemscount)
+                if (size.x <= itemscount)
                     break;
-                GameObject lootGameObject = Instantiate(item, new Vector3((transform.position.x + itemscount + 1) * offset.x, (transform.position.y + 1) * offset.y, 0), Quaternion.identity, transform);
+                GameObject lootGameObject = Instantiate(item, new Vector3((transform.position.x + itemscount) * offset.x, (transform.position.y + 1) * offset.y, 0), Quaternion.identity, transform);
                 itemscount++;
             }
         }

@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;   
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerUpgrades : PlayerExist
 {
-    public UnityEvent onPickUp;
+    public UnityEvent onPickUp, onEnterTrigger;
+    private Text UpgradeValueText;
 
+    new private void Start()
+    {
+        UpgradeValueText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeValueText;
+    }
     //NO DASH UPGRADES (NEED TO ADD?)
-
     //Refill Stats (on PlayerStats call)
+    public void SetUI(float value)
+    {
+        UpgradeValueText.text = value.ToString();
+    }
     public void CurrentHealthChange(float value)
     {
         player.GetComponentInChildren<PlayerStats>().HealCharacter(value);
