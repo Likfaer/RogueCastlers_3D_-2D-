@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using YamlDotNet.Core.Tokens;
 
 public class CurrencyChange : PlayerExist
 {
@@ -13,8 +12,6 @@ public class CurrencyChange : PlayerExist
     public pickupObject currentObject;
     public int pickupQuantity;
 
-
-    private bool isButtonPressed = false; // Track if the button is currently pressed
     private bool isPlayerOnObject = false; // Track if the player is on the object
 
     private GameObject UpgradePanel;

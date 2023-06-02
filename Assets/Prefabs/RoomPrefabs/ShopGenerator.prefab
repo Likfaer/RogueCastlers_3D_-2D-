@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40038ecff2e6f94994169ba2c78ccf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: 3
-  xMax: 7
+  xMin: 4
+  xMax: 10
   yMin: 3
   yMax: 3
   offset: {x: 0.5, y: 0.5}
@@ -59,5 +59,7 @@ MonoBehaviour:
   - {fileID: 65185738072793730, guid: 24b6f6817929c154da56a5188a4d2b73, type: 3}
   - {fileID: 65185738072793730, guid: a1a26467a03d58247b560fb418e211ff, type: 3}
   - {fileID: 65185738072793730, guid: d2f14b092d1884240ac8db6fb99a7957, type: 3}
+  - {fileID: 65185738072793730, guid: 26ae0c332240db84a86afb0237574e64, type: 3}
+  - {fileID: 65185738072793730, guid: d1d89dbd8247e1d4da1cbcadb0fce03d, type: 3}
   EnemiesCountText: {fileID: 0}
   RoomsCountText: {fileID: 0}

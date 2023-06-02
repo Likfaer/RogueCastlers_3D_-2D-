@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         int hardExpand = PlayerPrefs.GetInt("RoomsCount");
         maxHealth = maxHealth * (1 + hardExpand * 0.02f);
-        Debug.Log("maxHealthNow" + maxHealth);
+        //Debug.Log("maxHealthNow" + maxHealth);
     }
     public void DealDamage(float damage, GameObject sender)
     {

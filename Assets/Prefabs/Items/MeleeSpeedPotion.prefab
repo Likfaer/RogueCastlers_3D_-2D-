@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a58818a54778d741bf5d4264ec5157b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 10
+  dropChance: 20
 --- !u!114 &-3651828755636762217
 MonoBehaviour:
   m_ObjectHideFlags: 0

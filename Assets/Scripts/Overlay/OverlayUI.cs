@@ -13,6 +13,7 @@ public class OverlayUI : PlayerExist
     public Text UpgradeNameText;
     public Text UpgradeValueText;
     public Text UpgradeCostText;
+    
 
     //PauseMenu
 
@@ -20,6 +21,7 @@ public class OverlayUI : PlayerExist
     public bool PlayerDead = false;
 
     public GameObject pauseMenuUI;
+    public GameObject statsPanelUI;
     public GameObject deadMenuUI;
 
     public float transitionTime = 1f;
@@ -27,17 +29,11 @@ public class OverlayUI : PlayerExist
 
     new void Start()
     {
-        timerPanel = GameObject.Find("UI_Overlay/TimerPanel");
-        timerNextText = GameObject.Find("UI_Overlay/TimerPanel/TimerText").GetComponent<Text>();    
-        timerNextText.text = "";
         timerPanel.SetActive(false);
-
-        UpgradePanel = GameObject.Find("UI_Overlay/UpgradePanel");
-        UpgradeNameText = GameObject.Find("UI_Overlay/UpgradePanel/UpgradeNameText").GetComponent<Text>();
-        UpgradeValueText = GameObject.Find("UI_Overlay/UpgradePanel/UpgradeValueText").GetComponent<Text>();
-        UpgradeCostText = GameObject.Find("UI_Overlay/UpgradePanel/UpgradeCostText").GetComponent<Text>();
-        UpgradeNameText.text = "";
+        timerNextText.text = "";
         UpgradePanel.SetActive(false);
+        UpgradeNameText.text = "";
+        statsPanelUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,10 +46,12 @@ public class OverlayUI : PlayerExist
                 if (GameIsPaused)
                 {
                     Resume();
+                    statsPanelUI.SetActive(false);
                 }
                 else
                 {
                     Pause();
+                    statsPanelUI.SetActive(true);
                 }
             }
         }

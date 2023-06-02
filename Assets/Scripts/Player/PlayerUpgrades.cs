@@ -14,6 +14,37 @@ public class PlayerUpgrades : PlayerExist
         UpgradeValueText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().UpgradeValueText;
     }
     //NO DASH UPGRADES (NEED TO ADD?)
+
+    //Weapons
+    public void MeleeActive()
+    {
+        if (player.transform.Find("WeaponParent").gameObject.activeSelf == false)
+        {
+            player.transform.Find("WeaponParent").gameObject.SetActive(true);
+        }
+        else
+        {
+            player.GetComponentInChildren<WeaponParent>().minDamage += 5;
+            player.GetComponentInChildren<WeaponParent>().maxDamage += 5;
+            player.GetComponentInChildren<WeaponParent>().SetUI();
+        }
+        
+    }
+    public void RangeActive()
+    {
+        if (player.transform.Find("RangeParent").gameObject.activeSelf == false)
+        {
+            player.transform.Find("RangeParent").gameObject.SetActive(true);
+        }
+        else
+        {
+            player.GetComponentInChildren<TestSpell>().minDamage += 5;
+            player.GetComponentInChildren<TestSpell>().maxDamage += 5;
+            player.GetComponentInChildren<TestSpell>().SetUI();
+        }
+        
+    }
+
     //Refill Stats (on PlayerStats call)
     public void SetUI(float value)
     {

@@ -1,4 +1,3 @@
-using Ludiq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -92,14 +91,14 @@ public class WeaponParent : MonoBehaviour
     {
         foreach( Collider2D collision in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            Debug.Log(collision.name);
+            //Debug.Log(collision.name);
             if (collision.name != "Player")
             {
                 if (collision.GetComponent<Enemy>() != null)
                 {
-                    float abc = UnityEngine.Random.Range(minDamage, maxDamage);
-                    Debug.Log("dmg" + abc);
-                    collision.GetComponent<Enemy>().DealDamage(abc, gameObject);
+                    float dmg = UnityEngine.Random.Range(minDamage, maxDamage);
+                    //Debug.Log("dmg" + dmg);
+                    collision.GetComponent<Enemy>().DealDamage(dmg, gameObject);
                 }
                 if (collision.GetComponent<EnemyRangeCollision>() != null)
                 {
