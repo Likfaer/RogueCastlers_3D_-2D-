@@ -8,6 +8,7 @@ TagManager:
   - TestoEnemy
   - Wall
   - Autopickable
+  - Shield
   layers:
   - Default
   - TransparentFX

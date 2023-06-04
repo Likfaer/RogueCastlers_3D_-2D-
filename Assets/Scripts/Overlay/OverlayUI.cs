@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static System.TimeZoneInfo;
 
 public class OverlayUI : PlayerExist
 {
@@ -14,7 +13,6 @@ public class OverlayUI : PlayerExist
     public Text UpgradeValueText;
     public Text UpgradeCostText;
     
-
     //PauseMenu
 
     public static bool GameIsPaused = false;
@@ -26,6 +24,8 @@ public class OverlayUI : PlayerExist
 
     public float transitionTime = 1f;
     public Animator transition;
+
+    public int roomsRecord = 0;
 
     new void Start()
     {
@@ -62,6 +62,12 @@ public class OverlayUI : PlayerExist
         if (player == null)
         {
             deadMenuUI.SetActive(true);
+            PlayerPrefs.SetInt("totalRoomsCount", PlayerPrefs.GetInt("totalRoomsCount") + PlayerPrefs.GetInt("RoomsCount"));
+            if (PlayerPrefs.GetInt("RoomsCount") > PlayerPrefs.GetInt("RoomsRecord"))
+            {
+                PlayerPrefs.SetInt("RoomsRecord", PlayerPrefs.GetInt("RoomsCount"));
+            }
+            PlayerPrefs.SetInt("RoomsCount", 0);
             PlayerDead = true;
         }
     }
@@ -80,6 +86,7 @@ public class OverlayUI : PlayerExist
     public void LoadRestart()
     {
         Time.timeScale = 1f;
+        PlayerDead = false;
         //SetDefaults();
         StartCoroutine(LoadLevel(1));
     }
