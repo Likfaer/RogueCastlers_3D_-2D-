@@ -766,7 +766,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3789136058402602614, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
       propertyPath: m_Name
-      value: SteamManager
+      value: ServerGameManager
       objectReference: {fileID: 0}
     - target: {fileID: 3789136058402602616, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
       propertyPath: m_RootOrder

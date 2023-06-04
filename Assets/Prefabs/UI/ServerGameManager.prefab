@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3789136058402602616}
   - component: {fileID: 3789136058402602615}
   - component: {fileID: 1764631265}
+  - component: {fileID: 1329323877313640108}
   m_Layer: 0
-  m_Name: SteamManager
+  m_Name: ServerGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c8b2f4ae737e14f8062d020738a93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steamID: 
 --- !u!114 &1764631265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,5 +55,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c332392cb56a04284040a55c880cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetURL: http://localhost/logreg.php
+  visData:
+    playerStats:
+      steamID: tempid
+      timeplayed: -1
+      roomsplayed: 
+      roomRecord: -1
+    error:
+      message: Text
+      isError: 1
+--- !u!114 &1329323877313640108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789136058402602614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e204a14ed4c3c40a2351de1b9dfcda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

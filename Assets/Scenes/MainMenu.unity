@@ -1100,7 +1100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -226.54608, y: -49.850037}
+  m_AnchoredPosition: {x: -226.54614, y: -49.850098}
   m_SizeDelta: {x: 250.89197, y: 100.29999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524863176
@@ -1136,7 +1136,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Steam
 --- !u!222 &1524863177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1571,18 +1571,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1764631265, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
-      propertyPath: targetURL
-      value: http://localhost/logreg.php
-      objectReference: {fileID: 0}
     - target: {fileID: 3789136058402602614, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
       propertyPath: m_Name
       value: SteamManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3789136058402602615, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
-      propertyPath: webManager
-      value: 
-      objectReference: {fileID: 1764631265}
     - target: {fileID: 3789136058402602616, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1629,17 +1621,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
---- !u!114 &1764631265 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1764631265, guid: 7aabca9680818624587cc1338fe4f0a8, type: 3}
-  m_PrefabInstance: {fileID: 1764631263}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c332392cb56a04284040a55c880cbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1949830378
 GameObject:
   m_ObjectHideFlags: 0

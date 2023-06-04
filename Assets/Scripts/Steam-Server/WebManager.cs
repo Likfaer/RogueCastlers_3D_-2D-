@@ -30,9 +30,6 @@ public class PlayerStatistics
         timeplayed = timepl;
         roomRecord = roomrec;
     }
-    public void SetsteamID(string value) => steamID = value;
-    public void Settimeplayed(string value) => timeplayed = value;
-    public void SetroomRecord(string value) => roomRecord = value;
 }
 public class WebManager : SteamManager
 {
@@ -79,11 +76,8 @@ public class WebManager : SteamManager
     }
     private void OnApplicationQuit()
     {
-        StartCoroutine(Quit(SteamManager.steamID.ToString()));
-    }
-    public void testSend()
-    {
-        Debug.Log("send! " + SteamManager.steamID.ToString());
+        GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().SetOnReloadorQuit();
+        StopAllCoroutines();
         StartCoroutine(Quit(SteamManager.steamID.ToString()));
     }
     IEnumerator Quit(string steamID)
@@ -94,17 +88,17 @@ public class WebManager : SteamManager
 
         float elapsedTime = Time.time;
         form.AddField("timeplayed", elapsedTime.ToString());
-        Debug.Log("time" + elapsedTime.ToString());
+       // Debug.Log("time" + elapsedTime.ToString());
 
-        string roomsplayed = PlayerPrefs.GetInt("totalRoomsCount").ToString();
+        int roomsplayed = PlayerPrefs.GetInt("totalRoomsCount");
         form.AddField("roomsplayed", roomsplayed);
-        Debug.Log("roomsplayed" + roomsplayed);
+        //Debug.Log(roomsplayed.GetType() + " roomsplayed " + roomsplayed);
         PlayerPrefs.SetInt("totalRoomsCount", 0);
 
-        string roomsrecord = PlayerPrefs.GetInt("roomsrecord").ToString();
+        int roomsrecord = PlayerPrefs.GetInt("RoomsRecord");
         form.AddField("roomsrecord", roomsrecord);
-        Debug.Log("roomsrecord " + roomsrecord);
-        PlayerPrefs.SetInt("roomsrecord", 0);
+        //Debug.Log(roomsrecord.GetType() + " roomsrecord " + roomsrecord);
+        PlayerPrefs.SetInt("roomsRecord", 0);
 
         using (UnityWebRequest www = UnityWebRequest.Post(targetURL, form))
         {
@@ -116,10 +110,10 @@ public class WebManager : SteamManager
             }
             else
             {
-                Debug.Log("1 : " + GetUserData(userData));
-                Debug.Log("2 : " + www.downloadHandler.text);
+                //Debug.Log("1 : " + GetUserData(userData));
+                //Debug.Log("2 : " + www.downloadHandler.text);
                 userData = SetUserData(www.downloadHandler.text);
-                Debug.Log("3 : " + GetUserData(userData));
+                //Debug.Log("3 : " + GetUserData(userData));
             }
         }
 

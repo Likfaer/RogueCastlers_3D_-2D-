@@ -55,19 +55,13 @@ public class OverlayUI : PlayerExist
                 }
             }
         }
-        
     }
     private void FixedUpdate()
     {
         if (player == null)
         {
             deadMenuUI.SetActive(true);
-            PlayerPrefs.SetInt("totalRoomsCount", PlayerPrefs.GetInt("totalRoomsCount") + PlayerPrefs.GetInt("RoomsCount"));
-            if (PlayerPrefs.GetInt("RoomsCount") > PlayerPrefs.GetInt("RoomsRecord"))
-            {
-                PlayerPrefs.SetInt("RoomsRecord", PlayerPrefs.GetInt("RoomsCount"));
-            }
-            PlayerPrefs.SetInt("RoomsCount", 0);
+            GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().SetOnReloadorQuit();
             PlayerDead = true;
         }
     }
@@ -86,6 +80,10 @@ public class OverlayUI : PlayerExist
     public void LoadRestart()
     {
         Time.timeScale = 1f;
+        if (GameIsPaused)
+        {
+            GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().SetOnReloadorQuit();
+        }
         PlayerDead = false;
         //SetDefaults();
         StartCoroutine(LoadLevel(1));
@@ -93,6 +91,7 @@ public class OverlayUI : PlayerExist
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().SetOnReloadorQuit();
         //SetDefaults();
         StartCoroutine(LoadLevel(0));
     }

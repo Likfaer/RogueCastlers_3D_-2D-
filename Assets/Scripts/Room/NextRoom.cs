@@ -68,8 +68,7 @@ public class NextRoom : PlayerExist
         playerTP.position = new Vector3 (0.175f, 0.25f, 0f);
         Destroy(oldRG);
         Destroy(oldSG);
-        //Debug.Log("Adding " + PlayerPrefs.GetInt("RoomsCount") + " + 1 ");
-        PlayerPrefs.SetInt("RoomsCount", PlayerPrefs.GetInt("RoomsCount") + 1);
+        GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().AddNextRoom();
         Instantiate(nextRoom, new Vector3(0.5f,0.5f,0), Quaternion.identity);
     }
 

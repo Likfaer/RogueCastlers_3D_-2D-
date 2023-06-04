@@ -26,10 +26,6 @@ public class RoomGenerator : MonoBehaviour
     public Text EnemiesCountText;
     public Text RoomsCountText;
 
-    void OnApplicationQuit()
-    {
-        PlayerPrefs.SetInt("RoomsCount", 0);
-    }
     void Start()
     {
         //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
