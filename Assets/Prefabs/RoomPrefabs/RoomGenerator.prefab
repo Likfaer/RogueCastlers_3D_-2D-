@@ -49,8 +49,7 @@ MonoBehaviour:
   yMin: 5
   yMax: 9
   offset: {x: 0.5, y: 0.5}
-  wallVert: {fileID: 1900563510077650867, guid: 65368ae1667dd0b44bc26df56b9311d9, type: 3}
-  wallHor: {fileID: 7462042485861503489, guid: 6365002e41dec9545b25112de6a95df5, type: 3}
+  wall: {fileID: 7462042485861503489, guid: 6365002e41dec9545b25112de6a95df5, type: 3}
   floor: {fileID: 7665253874299005825, guid: 8c78ea57538e59a4f8feca5769a07c76, type: 3}
   corner: {fileID: 8418501431817519757, guid: 6846eb795b366364c8c0154d96adc26e, type: 3}
   ShopButton: {fileID: 2584158855478673921, guid: c4dc2062b9c9d8e4d8ee89c66b25c939, type: 3}

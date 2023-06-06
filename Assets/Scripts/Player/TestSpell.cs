@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TestSpell : MonoBehaviour
@@ -20,15 +21,16 @@ public class TestSpell : MonoBehaviour
     {
         if (GameObject.Find("UI_Overlay"))
         {
-            AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkDmgText").GetComponent<Text>();
-            AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/RAtkSpeedText").GetComponent<Text>();
             SetUI();
         }
     }
     public void SetUI()
     {
+        AttackText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().RAtkDmg.GetComponent<Text>();
+        AttackSpeedText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().RAtkSpeed.GetComponent<Text>();
         AttackText.text = "RAtkDmg: " + minDamage + " - " + maxDamage;
         AttackSpeedText.text = "RAtkS: " + attackCooldown;
+
     }
 
     void Update()
@@ -46,6 +48,9 @@ public class TestSpell : MonoBehaviour
             Vector3 dir = (mousePos - myPos).normalized;
             spell.GetComponent<Rigidbody2D>().velocity = dir * projectileForce;
             spell.GetComponent<RangeCollision>().damage = Random.Range(minDamage,maxDamage);
+
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            spell.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }

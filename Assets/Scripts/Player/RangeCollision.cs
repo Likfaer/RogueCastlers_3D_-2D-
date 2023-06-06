@@ -6,6 +6,8 @@ using UnityEngine;
 public class RangeCollision : MonoBehaviour
 {
     public float damage = 0;
+    public bool destroyable = true;
+    public bool reflexible;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,11 +17,27 @@ public class RangeCollision : MonoBehaviour
             {
                 //Debug.Log(gameObject.layer);
                 collision.GetComponent<Enemy>().DealDamage(damage, gameObject);
-                Destroy(gameObject);
+                if (destroyable)
+                {
+                    Destroy(gameObject);
+                }
             }
-            if (collision.tag == "Wall")
+            else if (collision.CompareTag("Wall"))
             {
-                Destroy(gameObject);
+                if (reflexible)
+                {
+                    Vector2 wallNormal = collision.transform.up;
+                    Vector2 incomingDirection = GetComponent<Rigidbody2D>().velocity.normalized;
+                    Vector2 reflectionDirection = Vector2.Reflect(incomingDirection, wallNormal);
+                    GetComponent<Rigidbody2D>().velocity = reflectionDirection * GetComponent<Rigidbody2D>().velocity.magnitude;
+
+                    float angle = Mathf.Atan2(reflectionDirection.y, reflectionDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+                else if (destroyable)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

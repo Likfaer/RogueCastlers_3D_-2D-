@@ -41,7 +41,7 @@ public class CurrencyChange : PlayerExist
             {
                 float EventCounts = gameObject.GetComponent<PlayerUpgrades>().onPickUp.GetPersistentEventCount();
 
-                UpgradeNameText.text = gameObject.name;
+                UpgradeNameText.text = gameObject.GetComponent<SpriteRenderer>().sprite.name;
 
                 gameObject.GetComponent<PlayerUpgrades>().onEnterTrigger?.Invoke();
 

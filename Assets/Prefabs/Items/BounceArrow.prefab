@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3651828755636762217}
   - component: {fileID: 7146649368158305636}
   m_Layer: 0
-  m_Name: TestSpell
+  m_Name: BounceArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df5d12d834372454599b16e5a0c538c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f7c7946b16d14846999db3c31e29c28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7146649368158305636}
         m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
-        m_MethodName: SpellActive
+        m_MethodName: BounceActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

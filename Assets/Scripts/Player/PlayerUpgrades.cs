@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -30,11 +31,11 @@ public class PlayerUpgrades : PlayerExist
         }
         
     }
-    public void RangeActive()
+    public void SpellActive()
     {
-        if (player.transform.Find("RangeParent").gameObject.activeSelf == false)
+        if (player.transform.Find("RangeParent/TestSpell").gameObject.activeSelf == false)
         {
-            player.transform.Find("RangeParent").gameObject.SetActive(true);
+            player.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
         }
         else
         {
@@ -42,7 +43,39 @@ public class PlayerUpgrades : PlayerExist
             player.GetComponentInChildren<TestSpell>().maxDamage += 5;
             player.GetComponentInChildren<TestSpell>().SetUI();
         }
-        
+        if (player.transform.Find("RangeParent/BounceSpell").gameObject.activeSelf == true && player.transform.Find("RangeParent/TestSpell").gameObject.activeSelf == true)
+        {
+            player.transform.Find("RangeParent").GetComponent<WeaponSwitcher>().enabled = true;
+        }
+    }
+    public void BounceActive()
+    {
+        if (player.transform.Find("RangeParent/BounceSpell").gameObject.activeSelf == false)
+        {
+            player.transform.Find("RangeParent/BounceSpell").gameObject.SetActive(true);
+        }
+        else
+        {
+            player.GetComponentInChildren<TestSpell>().minDamage += 5;
+            player.GetComponentInChildren<TestSpell>().maxDamage += 5;
+            player.GetComponentInChildren<TestSpell>().SetUI();
+        }
+        if (player.transform.Find("RangeParent/BounceSpell").gameObject.activeSelf == true && player.transform.Find("RangeParent/TestSpell").gameObject.activeSelf == true)
+        {
+            player.transform.Find("RangeParent").GetComponent<WeaponSwitcher>().enabled = true;
+        }
+    }
+    public void ShieldActive()
+    {
+        if (player.transform.Find("ShieldProtector").gameObject.activeSelf == false)
+        {
+            player.transform.Find("ShieldProtector").gameObject.SetActive(true);
+        }
+        else
+        {
+            player.GetComponentInChildren<ShieldProtector>().maxObjects += 1;
+        }
+
     }
 
     //Refill Stats (on PlayerStats call)
@@ -86,4 +119,5 @@ public class PlayerUpgrades : PlayerExist
         player.GetComponent<AgentMover>().maxSpeed += value;
         player.GetComponent<PlayerInput>().SetUI();
     }
+
 }

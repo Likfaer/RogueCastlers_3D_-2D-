@@ -20,6 +20,10 @@ public class OverlayUI : PlayerExist
 
     public GameObject pauseMenuUI;
     public GameObject statsPanelUI;
+
+    public Text RAtkDmg;
+    public Text RAtkSpeed;
+
     public GameObject deadMenuUI;
 
     public float transitionTime = 1f;

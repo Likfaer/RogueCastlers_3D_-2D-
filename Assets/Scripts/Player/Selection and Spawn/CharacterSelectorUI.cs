@@ -48,6 +48,7 @@ public class CharacterSelectorUI : MonoBehaviour
             case ("Range"):
                 //Debug.Log("RangeNow");
                 characterPrefab.transform.Find("RangeParent").gameObject.SetActive(true);
+                characterPrefab.transform.Find("TestSpell").gameObject.SetActive(true);
                 break;
             default:
                 //Debug.Log("4to-to ne tak");

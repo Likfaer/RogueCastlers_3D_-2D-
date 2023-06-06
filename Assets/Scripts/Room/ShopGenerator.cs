@@ -12,7 +12,7 @@ public class ShopGenerator : MonoBehaviour
     public Vector2 offset;
 
     //room-objects
-    public GameObject wallVert, wallHor, floor, corner;
+    public GameObject wall, floor, corner;
 
     //teleports
     public GameObject nextRoomButton;
@@ -24,11 +24,6 @@ public class ShopGenerator : MonoBehaviour
     //overlay
     private int countRooms;
 
-    private GameObject UI_Overlay;
-    private Transform UItoPanel;
-    private GameObject EnemyPanel;
-    private Transform PaneltoTextEnemy;
-    private Transform PaneltoTextRoom;
     public Text EnemiesCountText;
     public Text RoomsCountText;
 
@@ -38,22 +33,18 @@ public class ShopGenerator : MonoBehaviour
     }
     void Start()
     {
+        //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
         countRooms = PlayerPrefs.GetInt("RoomsCount");
         //room-size
         setRoomSize();
 
         //UI_Overlay
 
-        UI_Overlay = GameObject.Find("UI_Overlay");
-        UItoPanel = UI_Overlay.transform.Find("EnemyPanel");
-        EnemyPanel = UItoPanel.gameObject;
-
-        PaneltoTextEnemy = EnemyPanel.transform.Find("EnemiesText");
-        EnemiesCountText = PaneltoTextEnemy.GetComponent<Text>();
+        EnemiesCountText = GameObject.Find("UI_Overlay/EnemyPanel/EnemiesText").GetComponent<Text>();
         EnemiesCountText.text = "";
 
-        PaneltoTextRoom = EnemyPanel.transform.Find("RoomsText");
-        RoomsCountText = PaneltoTextRoom.GetComponent<Text>();
+
+        RoomsCountText = GameObject.Find("UI_Overlay/EnemyPanel/RoomsText").GetComponent<Text>();
         //RoomsCountText.text = "Room 0";
         getRoomCountUI();
 
@@ -68,6 +59,17 @@ public class ShopGenerator : MonoBehaviour
         }
         Walls();
         // Items
+
+        RandomShop();
+
+        //Teleports
+        nextRoomButton = Instantiate(nextRoomButton, new Vector3(0.25f, size.y * 0.25f + 0.5f, 0), Quaternion.identity, transform);
+        //nextroom должен запускать свой старт для включения панельки с таймером перехода
+        nextRoomButton.SetActive(true);
+    }
+
+    public void RandomShop()
+    {
         List<GameObject> possibleItems = new List<GameObject>();
         foreach (GameObject item in lootItems)
         {
@@ -90,36 +92,29 @@ public class ShopGenerator : MonoBehaviour
                 itemscount++;
             }
         }
-
-        //Teleports
-        nextRoomButton = Instantiate(nextRoomButton, new Vector3(0.25f, size.y * 0.25f + 0.5f, 0), Quaternion.identity, transform);
-        //nextroom должен запускать свой старт для включения панельки с таймером перехода
-        nextRoomButton.SetActive(true);
-    }
-
-    public void RandomShop()
-    {
-        // speed,atkspeed, speed,health
-
     }
 
     void Walls()
     {
-        // Left+Right Walls
-        wallVert.transform.localScale = new Vector3(0.1f, (size.y / 2), 1);
-        Renderer prefabRendererV = wallVert.GetComponent<Renderer>();
-        Material prefabMaterialV = prefabRendererV.sharedMaterial;
-        prefabMaterialV.SetTextureScale("_MainTex", new Vector2(1, size.x));
-        Instantiate(wallVert, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.identity, transform);
-        Instantiate(wallVert, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.identity, transform);
+        GameObject wallH = wall;
 
-        // Top+Bottom Walls
-        wallHor.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
-        Renderer prefabRendererH = wallHor.GetComponent<Renderer>();
+        Renderer prefabRendererH = wallH.GetComponent<Renderer>();
         Material prefabMaterialH = prefabRendererH.sharedMaterial;
         prefabMaterialH.SetTextureScale("_MainTex", new Vector2(size.y, 1));
-        Instantiate(wallHor, new Vector3((0.25f * size.x), transform.position.y - 0.55f, 0), Quaternion.identity, transform);
-        Instantiate(wallHor, new Vector3((0.25f * size.x), transform.position.y * size.y + 0.05f, 0), Quaternion.identity, transform);
+
+        wallH.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
+
+        Instantiate(wallH, new Vector3((0.25f * size.x), transform.position.y - 0.55f, 0), Quaternion.identity, transform);
+        Instantiate(wallH, new Vector3((0.25f * size.x), transform.position.y * size.y + 0.05f, 0), Quaternion.identity, transform);
+
+        // Left+Right Walls
+        GameObject wallV = wallH;
+
+        wallV.transform.localScale = new Vector3((size.y / 2), 0.1f, 1);
+
+
+        Instantiate(wallV, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
+        Instantiate(wallV, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
 
         // Corners
 

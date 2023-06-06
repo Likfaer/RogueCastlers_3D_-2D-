@@ -13,7 +13,7 @@ public class RoomGenerator : MonoBehaviour
     public Vector2 offset;
     
     //room-objects
-    public GameObject wallVert, wallHor, floor, corner;
+    public GameObject wall, floor, corner;
 
     //teleports
     public GameObject ShopButton, nextRoomButton;
@@ -72,21 +72,28 @@ public class RoomGenerator : MonoBehaviour
     }
     void Walls()
     {
-        // Left+Right Walls
-        wallVert.transform.localScale = new Vector3(0.1f, (size.y / 2), 1);
-        Renderer prefabRendererV = wallVert.GetComponent<Renderer>();
-        Material prefabMaterialV = prefabRendererV.sharedMaterial;
-        prefabMaterialV.SetTextureScale("_MainTex", new Vector2(1, size.x));
-        Instantiate(wallVert, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.identity, transform);
-        Instantiate(wallVert, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.identity, transform);
-
         // Top+Bottom Walls
-        wallHor.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
-        Renderer prefabRendererH = wallHor.GetComponent<Renderer>();
+        GameObject wallH = wall;
+
+        Renderer prefabRendererH = wallH.GetComponent<Renderer>();
         Material prefabMaterialH = prefabRendererH.sharedMaterial;
         prefabMaterialH.SetTextureScale("_MainTex", new Vector2(size.y, 1));
-        Instantiate(wallHor, new Vector3((0.25f * size.x), transform.position.y - 0.55f, 0), Quaternion.identity, transform);
-        Instantiate(wallHor, new Vector3((0.25f * size.x), transform.position.y * size.y + 0.05f, 0), Quaternion.identity, transform);
+
+        wallH.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
+
+        Instantiate(wallH, new Vector3((0.25f * size.x), transform.position.y - 0.55f, 0), Quaternion.identity, transform);
+        Instantiate(wallH, new Vector3((0.25f * size.x), transform.position.y * size.y + 0.05f, 0), Quaternion.identity, transform);
+
+        // Left+Right Walls
+        GameObject wallV = wallH;
+
+        wallV.transform.localScale = new Vector3((size.y / 2), 0.1f , 1);
+
+
+        Instantiate(wallV, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
+        Instantiate(wallV, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
+
+
 
         // Corners
 
