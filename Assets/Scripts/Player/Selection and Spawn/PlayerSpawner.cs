@@ -45,7 +45,7 @@ public class PlayerSpawner : MonoBehaviour
                 case ("Range"):
                     //Base Activations
                     NakedPlayer.transform.Find("RangeParent").gameObject.SetActive(true);
-                    NakedPlayer.transform.Find("TestSpell").gameObject.SetActive(true);
+                    NakedPlayer.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
 
                     //Movement Activations
                     NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.55f;
@@ -63,7 +63,7 @@ public class PlayerSpawner : MonoBehaviour
                     //Base Activations
                     NakedPlayer.transform.Find("WeaponParent").gameObject.SetActive(true);
                     NakedPlayer.transform.Find("RangeParent").gameObject.SetActive(true);
-                    NakedPlayer.transform.Find("TestSpell").gameObject.SetActive(true);
+                    NakedPlayer.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
 
                     //Movement Activations
 

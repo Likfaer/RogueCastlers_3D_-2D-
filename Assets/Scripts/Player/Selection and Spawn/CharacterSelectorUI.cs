@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,10 @@ public class CharacterSelectorUI : MonoBehaviour
     public Transform selectedCharacter;
     private void Start()
     {
+        Debug.Log(CharacterSelector.instance.characters.Count());
         foreach (Character c in CharacterSelector.instance.characters)
         {
+            
             GameObject option = Instantiate(optionPrefab, transform);
 
             Text text = option.GetComponentInChildren<Text>();
@@ -48,7 +51,7 @@ public class CharacterSelectorUI : MonoBehaviour
             case ("Range"):
                 //Debug.Log("RangeNow");
                 characterPrefab.transform.Find("RangeParent").gameObject.SetActive(true);
-                characterPrefab.transform.Find("TestSpell").gameObject.SetActive(true);
+                //characterPrefab.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
                 break;
             default:
                 //Debug.Log("4to-to ne tak");

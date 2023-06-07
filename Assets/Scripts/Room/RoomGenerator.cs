@@ -74,10 +74,7 @@ public class RoomGenerator : MonoBehaviour
     {
         // Top+Bottom Walls
         GameObject wallH = wall;
-
-        Renderer prefabRendererH = wallH.GetComponent<Renderer>();
-        Material prefabMaterialH = prefabRendererH.sharedMaterial;
-        prefabMaterialH.SetTextureScale("_MainTex", new Vector2(size.y, 1));
+        wallH.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.x, 1));
 
         wallH.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
 
@@ -88,7 +85,7 @@ public class RoomGenerator : MonoBehaviour
         GameObject wallV = wallH;
 
         wallV.transform.localScale = new Vector3((size.y / 2), 0.1f , 1);
-
+        wallV.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.y, 1));
 
         Instantiate(wallV, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
         Instantiate(wallV, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);

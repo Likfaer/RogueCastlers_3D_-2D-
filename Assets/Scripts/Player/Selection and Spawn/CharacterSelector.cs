@@ -14,6 +14,7 @@ public class CharacterSelector : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            instance.characters = this.characters;
             DontDestroyOnLoad(gameObject);
 
         } else{
