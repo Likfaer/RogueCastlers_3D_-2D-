@@ -11,7 +11,7 @@ public class CharacterSelectorUI : MonoBehaviour
     public Transform selectedCharacter;
     private void Start()
     {
-        Debug.Log(CharacterSelector.instance.characters.Count());
+        //Debug.Log(CharacterSelector.instance.characters.Count());
         foreach (Character c in CharacterSelector.instance.characters)
         {
             

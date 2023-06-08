@@ -9,7 +9,6 @@ public class PrefsManager : MonoBehaviour
         PlayerPrefs.SetInt("RoomsCount", 0);
         PlayerPrefs.SetInt("totalRoomsCount", 0);
         PlayerPrefs.SetInt("RoomsRecord", 0);
-        PlayerPrefs.DeleteAll();
     }
     void Awake()
     {

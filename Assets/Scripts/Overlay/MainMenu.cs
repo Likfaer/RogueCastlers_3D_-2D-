@@ -89,11 +89,6 @@ public class MainMenu : MonoBehaviour
     {
         
     }
-    void OnApplicationQuit()
-    {
-        Debug.Log("saving settings");
-        ApplySettings();
-    }
     IEnumerator LoadLevel (int levelIndex)
     {
         transitionObject.SetActive(true);

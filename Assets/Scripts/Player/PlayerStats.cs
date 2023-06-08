@@ -49,7 +49,6 @@ public class PlayerStats : MonoBehaviour
     {
         if (canTakeDamage)
         {
-            //Debug.Log("Маслину поймал");
             health -= damage;
             CheckDeath();
             SetHealthUI();
@@ -61,10 +60,6 @@ public class PlayerStats : MonoBehaviour
             damageFlashCoroutine = StartCoroutine(FlashDamageEffect());
             canTakeDamage = false;
             StartCoroutine(EnableDamageAfterCooldown());
-        }
-        else
-        {
-            Debug.Log("Еблан повторную словил, простим");
         }
     }
     IEnumerator FlashDamageEffect()

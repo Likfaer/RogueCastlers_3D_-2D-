@@ -115,25 +115,25 @@ public class PlayerInput : MonoBehaviour
         {
             if (Time.time >= (lastDash + dashCoolDown))
             {
+                targetPos = Vector2.zero;
                 if (GetComponent<Rigidbody2D>().velocity.x == 0 && GetComponent<Rigidbody2D>().velocity.y == 0)
                 {
-                    targetPos = Vector2.zero;
                     switch (FacingDir)
                     {
                         case Facing.UP:
-                            Debug.Log("UP");
+                            //Debug.Log("UP");
                             targetPos.y = 1;
                             break;
                         case Facing.DOWN:
-                            Debug.Log("DOWN");
+                            //Debug.Log("DOWN");
                             targetPos.y = -1;
                             break;
                         case Facing.LEFT:
-                            Debug.Log("LEFT");
+                            //Debug.Log("LEFT");
                             targetPos.x = -1;
                             break;
                         case Facing.RIGHT:
-                            Debug.Log("RIGHT");
+                            //Debug.Log("RIGHT");
                             targetPos.x = 1;
                             break;
                         default:

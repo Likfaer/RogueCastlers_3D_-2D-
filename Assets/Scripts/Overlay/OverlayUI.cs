@@ -23,6 +23,8 @@ public class OverlayUI : PlayerExist
 
     public Text RAtkDmg;
     public Text RAtkSpeed;
+    public Text MAtkDmg;
+    public Text MAtkSpeed;
 
     public GameObject deadMenuUI;
 

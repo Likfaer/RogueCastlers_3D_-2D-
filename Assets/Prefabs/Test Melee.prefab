@@ -903,8 +903,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  chaseDistance: 1.25
-  attackDistance: 0.145
+  chaseDistance: 2.25
+  attackDistance: 0.175
   attackCooldown: 1.75
   ranged: 0
 --- !u!114 &6512215345873549013

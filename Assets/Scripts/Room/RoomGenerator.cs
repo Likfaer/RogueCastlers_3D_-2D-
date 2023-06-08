@@ -82,7 +82,7 @@ public class RoomGenerator : MonoBehaviour
         Instantiate(wallH, new Vector3((0.25f * size.x), transform.position.y * size.y + 0.05f, 0), Quaternion.identity, transform);
 
         // Left+Right Walls
-        GameObject wallV = wallH;
+        GameObject wallV = wall;
         wallV.transform.localScale = new Vector3((size.y / 2), 0.1f , 1);
         wallV.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.y, 1));
 

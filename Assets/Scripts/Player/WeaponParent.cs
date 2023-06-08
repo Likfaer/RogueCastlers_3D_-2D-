@@ -28,13 +28,13 @@ public class WeaponParent : MonoBehaviour
     {
         if (GameObject.Find("UI_Overlay"))
         {
-            AttackText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkDmgText").GetComponent<Text>();
-            AttackSpeedText = GameObject.Find("UI_Overlay/StatsPanel/Panel/MAtkSpeedText").GetComponent<Text>();
             SetUI();
         }
     }
     public void SetUI()
     {
+        AttackText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().MAtkDmg.GetComponent<Text>();
+        AttackSpeedText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().MAtkSpeed.GetComponent<Text>();
         AttackText.text = "MAtkDmg: " + minDamage + " - " + maxDamage;
         AttackSpeedText.text = "MAtkS: " + attackCooldown;
     }

@@ -9,10 +9,11 @@ public class SteamInterface : SteamManager
     [SerializeField] private RawImage SteamUserPicture;
     [SerializeField] private Text SteamUserName;
 
-    async void Start()
+    async  void Start()
     {
         if (SteamClient.IsValid)
         {
+            //Debug.Log("Steam is valid");
             SteamUserName.text = SteamClient.Name.ToString();
             SteamUserName.color = Color.green;
             string steamid = SteamClient.SteamId.ToString();
@@ -22,9 +23,9 @@ public class SteamInterface : SteamManager
         }
         else
         {
+            //Debug.Log("Steam not valid");
             SteamUserName.text = "Unavaliable";
             SteamUserName.color = Color.red;
-
         }
     }
     public static Texture2D GetTextureFromImage(Steamworks.Data.Image image)
