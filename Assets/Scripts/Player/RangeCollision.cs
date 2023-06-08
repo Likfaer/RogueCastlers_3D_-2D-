@@ -6,6 +6,7 @@ using UnityEngine;
 public class RangeCollision : MonoBehaviour
 {
     public float damage = 0;
+    public float selfDestroyTime = 3f;
     public bool destroyable = true;
     public bool reflexible;
 
@@ -33,6 +34,10 @@ public class RangeCollision : MonoBehaviour
 
                     float angle = Mathf.Atan2(reflectionDirection.y, reflectionDirection.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    if (gameObject !=null)
+                    {
+                        Destroy(gameObject, selfDestroyTime);
+                    }
                 }
                 else if (destroyable)
                 {

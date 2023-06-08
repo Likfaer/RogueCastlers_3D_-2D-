@@ -22,6 +22,7 @@ public class EnemyShootingParent : PlayerExist
             Vector3 direction = (targetPos - myPos).normalized;
             spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
             spell.GetComponent<EnemyRangeCollision>().damage = Random.Range(minDamage, maxDamage);
+            spell.transform.parent = GameObject.Find("DropList").transform;
         }
     }
 }

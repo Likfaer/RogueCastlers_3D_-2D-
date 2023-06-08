@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,36 +72,44 @@ public class ShopGenerator : MonoBehaviour
     public void RandomShop()
     {
         List<GameObject> possibleItems = new List<GameObject>();
-        foreach (GameObject item in lootItems)
+        int qut = 0;
+        while (possibleItems.Count - 1 < size.x)
         {
-            float randomnow = Random.Range(1, 100);
-            //Debug.Log(item.GetComponent<Loot>().dropChance  + " >= " + randomnow + " ?");
-            if (item.GetComponent<Loot>().dropChance >= randomnow)
-            {
-                possibleItems.Add(item);
-            }
+            qut++;
+            AddItem();
+            //Debug.Log((possibleItems.Count - 1) + " < " + size.x + " ?");
+            if (qut > 50)
+                break;
         }
-        if (possibleItems.Count == 0) { Debug.Log("анлак.."); }
-        else
+        int itemscount = 1;
+        foreach (GameObject item in possibleItems)
         {
-            int itemscount = 1;
-            foreach (GameObject item in possibleItems)
+            if (size.x <= itemscount)
+                break;
+            GameObject lootGameObject = Instantiate(item, new Vector3((transform.position.x + itemscount) * offset.x, (transform.position.y + 1) * offset.y, 0), Quaternion.identity, transform);
+            itemscount++;
+        }
+        void AddItem()
+        {
+            foreach (GameObject item in lootItems)
             {
-                if (size.x <= itemscount)
-                    break;
-                GameObject lootGameObject = Instantiate(item, new Vector3((transform.position.x + itemscount) * offset.x, (transform.position.y + 1) * offset.y, 0), Quaternion.identity, transform);
-                itemscount++;
+                float randomnow = Random.Range(1, 100);
+                //Debug.Log("trying add " + item.transform.GetComponent<SpriteRenderer>().sprite.name + " with chance " + item.GetComponent<Loot>().dropChance  + " >= " + randomnow + " ?");
+
+                if (possibleItems.Count(itemObj => itemObj == item) < 2 && item.GetComponent<Loot>().dropChance >= randomnow)
+                {
+                    possibleItems.Add(item);
+                }
             }
         }
     }
 
+
     void Walls()
     {
+        // Top+Bottom Walls
         GameObject wallH = wall;
-
-        Renderer prefabRendererH = wallH.GetComponent<Renderer>();
-        Material prefabMaterialH = prefabRendererH.sharedMaterial;
-        prefabMaterialH.SetTextureScale("_MainTex", new Vector2(size.y, 1));
+        wallH.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.x, 1));
 
         wallH.transform.localScale = new Vector3((size.x / 2), 0.1f, 1);
 
@@ -109,9 +118,8 @@ public class ShopGenerator : MonoBehaviour
 
         // Left+Right Walls
         GameObject wallV = wallH;
-
         wallV.transform.localScale = new Vector3((size.y / 2), 0.1f, 1);
-
+        wallV.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.y, 1));
 
         Instantiate(wallV, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
         Instantiate(wallV, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);

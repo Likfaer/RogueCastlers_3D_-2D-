@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a58818a54778d741bf5d4264ec5157b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 10
+  dropChance: 25
 --- !u!114 &-3651828755636762217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObject: 0
-  pickupQuantity: -1
+  pickupQuantity: -12
 --- !u!114 &7146649368158305636
 MonoBehaviour:
   m_ObjectHideFlags: 0

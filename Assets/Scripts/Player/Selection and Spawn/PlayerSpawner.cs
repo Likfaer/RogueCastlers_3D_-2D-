@@ -32,12 +32,13 @@ public class PlayerSpawner : MonoBehaviour
                     NakedPlayer.transform.Find("WeaponParent").gameObject.SetActive(true);
 
                     //Movement Activations
-                    NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.75f;
+                    NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.85f;
 
                     //Damage Stats
-                    NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 200;
-                    NakedPlayer.GetComponentInChildren<WeaponParent>().minDamage = 30;
-                    NakedPlayer.GetComponentInChildren<WeaponParent>().maxDamage = 70;
+                    NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 300;
+                    NakedPlayer.GetComponentInChildren<WeaponParent>().minDamage = 50;
+                    NakedPlayer.GetComponentInChildren<WeaponParent>().maxDamage = 90;
+                    NakedPlayer.GetComponentInChildren<WeaponParent>().attackCooldown = 0.75f;
                     break;
 
 
@@ -48,12 +49,29 @@ public class PlayerSpawner : MonoBehaviour
                     NakedPlayer.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
 
                     //Movement Activations
-                    NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.55f;
+                    NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.65f;
 
                     //Damage Stats
-                    NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 100;
-                    NakedPlayer.GetComponentInChildren<TestSpell>().minDamage = 25;
-                    NakedPlayer.GetComponentInChildren<TestSpell>().maxDamage = 35;
+                    NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 175;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().minDamage = 55;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().maxDamage = 85;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().projectileForce = 0.9f;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().attackCooldown = 0.35f;
+                    break;
+
+                case ("Shield"):
+                    //Base Activations
+                    NakedPlayer.transform.Find("ShieldProtector").gameObject.SetActive(true);
+
+                    //Movement Activations
+                    NakedPlayer.GetComponent<AgentMover>().maxSpeed = 0.75f;
+
+                    //Damage Stats
+                    NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 250;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().maxObjects = 5;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().orbitRadius = 0.3f;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().orbitSpeed = 70f;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().damage = 15;
                     break;
 
 

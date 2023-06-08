@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -74,6 +73,7 @@ public class PlayerUpgrades : PlayerExist
         else
         {
             player.GetComponentInChildren<ShieldProtector>().maxObjects += 1;
+            player.GetComponentInChildren<ShieldProtector>().orbitSpeed += 10;
         }
 
     }

@@ -14,6 +14,10 @@ public class PlayerExist : MonoBehaviour
             Debug.Log("find other");
             player = GameObject.FindWithTag("Player");
         }
+        else
+        {
+            //Debug.Log("found");
+        }
     }
     public void SetDefaults()
     {
@@ -25,7 +29,7 @@ public class PlayerExist : MonoBehaviour
 
         //Movement Activations
         player.GetComponent<AgentMover>().maxSpeed = 0.65f;
-        player.GetComponent<PlayerInput>().dashRange = 1f;
+        player.GetComponent<PlayerInput>().dashSpeed = 1f;
 
         //Damage Stats
         player.GetComponentInChildren<WeaponParent>().minDamage = 25f;

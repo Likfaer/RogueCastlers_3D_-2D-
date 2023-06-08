@@ -51,6 +51,7 @@ public class TestSpell : MonoBehaviour
 
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             spell.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            spell.transform.parent = GameObject.Find("DropList").transform;
         }
     }
 }

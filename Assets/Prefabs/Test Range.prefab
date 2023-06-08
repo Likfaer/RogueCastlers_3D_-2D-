@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 7252245719071141624}
   m_Layer: 7
   m_Name: Test Range
-  m_TagString: TestoEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

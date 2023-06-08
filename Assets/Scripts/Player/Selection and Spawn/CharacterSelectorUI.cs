@@ -53,9 +53,28 @@ public class CharacterSelectorUI : MonoBehaviour
                 characterPrefab.transform.Find("RangeParent").gameObject.SetActive(true);
                 //characterPrefab.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
                 break;
+            case ("Shield"):
+                //Debug.Log("RangeNow");
+                characterPrefab.transform.Find("ShieldProtector").gameObject.SetActive(true);
+                characterPrefab.GetComponentInChildren<ShieldProtector>().maxObjects = 5; 
+                characterPrefab.GetComponentInChildren<ShieldProtector>().orbitRadius = 12;
+                characterPrefab.GetComponentInChildren<ShieldProtector>().spawnDelay = 0.001f;
+                StartCoroutine(TempFix(characterPrefab));
+                //characterPrefab.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
+                break;
             default:
                 //Debug.Log("4to-to ne tak");
                 break;
+        }
+    }
+    IEnumerator TempFix(GameObject pref)
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (Transform ttc in pref.GetComponentInChildren<ShieldProtector>().gameObject.transform)
+        {
+            GameObject circ = ttc.gameObject;
+            circ.transform.localScale = new Vector3(0.025f, 0.025f, 1f);
+            circ.transform.position = new Vector3(0f, 0f, -2f);
         }
     }
 

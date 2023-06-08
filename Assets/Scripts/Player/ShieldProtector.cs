@@ -10,8 +10,8 @@ public class ShieldProtector : PlayerExist
     public float orbitRadius = 0.25f; 
     public float orbitSpeed = 30f;
     public float damage = 2f;
-    
-    private float spawnDelay = 0.5f;
+
+    public float spawnDelay = 0.5f;
 
     //public float objectLifetime = 5f;
     private List<GameObject> spawnedObjects = new List<GameObject>();

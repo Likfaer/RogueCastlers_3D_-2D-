@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 6512215345873549013}
   m_Layer: 7
   m_Name: Test Melee
-  m_TagString: TestoEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -904,8 +904,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chaseDistance: 1.25
-  attackDistance: 0.2
-  attackCooldown: 2
+  attackDistance: 0.145
+  attackCooldown: 1.75
   ranged: 0
 --- !u!114 &6512215345873549013
 MonoBehaviour:

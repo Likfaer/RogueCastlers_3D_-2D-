@@ -20,6 +20,9 @@ public class PlayerStats : MonoBehaviour
     public Text coinsValue;
     public Text gemsValue;
 
+    public float damageCooldown = 0.45f; 
+    private bool canTakeDamage = true;
+    private Coroutine damageFlashCoroutine;
 
     private void Awake()
     {
@@ -44,9 +47,44 @@ public class PlayerStats : MonoBehaviour
     }
     public void DealDamage(float damage)
     {
-        health -= damage;
-        CheckDeath();
-        SetHealthUI();
+        if (canTakeDamage)
+        {
+            //Debug.Log("Маслину поймал");
+            health -= damage;
+            CheckDeath();
+            SetHealthUI();
+            // Trigger damage flash effect
+            if (damageFlashCoroutine != null)
+            {
+                StopCoroutine(damageFlashCoroutine);
+            }
+            damageFlashCoroutine = StartCoroutine(FlashDamageEffect());
+            canTakeDamage = false;
+            StartCoroutine(EnableDamageAfterCooldown());
+        }
+        else
+        {
+            Debug.Log("Еблан повторную словил, простим");
+        }
+    }
+    IEnumerator FlashDamageEffect()
+    {
+        Color flashColor = Color.red;
+        flashColor.a = 0.5f; // Set the desired alpha value for the flashing effect
+        Color originColor = player.transform.GetComponent<SpriteRenderer>().color;
+        for (int i = 0; i < 2; i++)
+        {
+            player.transform.GetComponent<SpriteRenderer>().color = flashColor;
+            yield return new WaitForSeconds(0.1f); 
+            player.transform.GetComponent<SpriteRenderer>().color = originColor;
+            yield return new WaitForSeconds(0.1f); 
+        }
+        player.transform.GetComponent<SpriteRenderer>().color = originColor; 
+    }
+    IEnumerator EnableDamageAfterCooldown()
+    {
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
     }
 
     public void HealCharacter(float heal)

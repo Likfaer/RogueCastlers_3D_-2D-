@@ -57,8 +57,8 @@ public class RoomGenerator : MonoBehaviour
         //Enemies
         spawner = GetComponent<EnemySpawner>();
 
-        //countEnemies = Mathf.RoundToInt(size.x * size.y / 2.6f);
-        countEnemies = 2;
+        countEnemies = Mathf.RoundToInt((size.x * size.y + (countRooms * size.x *size.y / 10)) / 3.6f);
+        //countEnemies = 2;
 
         //Debug.Log("enemies in RoomGen: " + countEnemies);
         spawner.StartSpawn(countEnemies, size.x, size.y);
@@ -83,14 +83,11 @@ public class RoomGenerator : MonoBehaviour
 
         // Left+Right Walls
         GameObject wallV = wallH;
-
         wallV.transform.localScale = new Vector3((size.y / 2), 0.1f , 1);
         wallV.GetComponent<Renderer>().sharedMaterial.SetTextureScale("_MainTex", new Vector2(size.y, 1));
 
         Instantiate(wallV, new Vector3(transform.position.x - 0.55f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
         Instantiate(wallV, new Vector3(transform.position.x * size.x + 0.05f, (0.25f * size.y), 0), Quaternion.Euler(0f, 0f, 90f), transform);
-
-
 
         // Corners
 

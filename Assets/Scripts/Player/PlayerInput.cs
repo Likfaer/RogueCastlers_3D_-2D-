@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,17 @@ public class PlayerInput : MonoBehaviour
     public Text speedText;
     public Text dashText;
 
-    public float dashRange;
+    private bool isDashing;
+    public float dashTime;
+    public float dashSpeed;
+    public float distanceBetweenImages;
+    public float dashCoolDown;
+    private float dashTimeLeft;
+    private float lastImagexpos;
+    private float lastDash = -100f;
+
+    public UnityEvent onStart, onDone;
+
     private enum Facing { UP, DOWN, LEFT, RIGHT };
     private Facing FacingDir = Facing.DOWN;
 
@@ -45,6 +56,8 @@ public class PlayerInput : MonoBehaviour
         onPointerInput?.Invoke(GetPointerInput());
         TakeInput();
         Move();
+        CheckDash();
+
     }
     private Vector2 GetPointerInput()
     {
@@ -56,7 +69,7 @@ public class PlayerInput : MonoBehaviour
     public void SetUI()
     {
         speedText.text = "Speed: " + gameObject.GetComponent<AgentMover>().maxSpeed.ToString();
-        dashText.text = "Dash: " + dashRange.ToString();
+        dashText.text = "Dash: " + dashSpeed.ToString();
     }
     private void Move()
     {
@@ -74,71 +87,97 @@ public class PlayerInput : MonoBehaviour
     private void TakeInput()
     {
         direction = Vector2.zero; // 0,0,0
-
         if (Input.GetKey(KeyCode.W))
         {
             direction += Vector2.up;
             FacingDir = Facing.UP;
+            targetPos.y = 1;
         }
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
             FacingDir = Facing.LEFT;
+            targetPos.x = -1;
         }
         if (Input.GetKey(KeyCode.S))
         {
             direction += Vector2.down;
             FacingDir = Facing.DOWN;
+            targetPos.y = -1;
         }
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
             FacingDir = Facing.RIGHT;
+            targetPos.x = 1;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Vector2 currentPos = transform.position;
-            targetPos = Vector2.zero;
-            if (FacingDir == Facing.UP)
+            if (Time.time >= (lastDash + dashCoolDown))
             {
-                targetPos.y = 1;
-                UpDown = true;
-                LeftRight = false;
+                if (GetComponent<Rigidbody2D>().velocity.x == 0 && GetComponent<Rigidbody2D>().velocity.y == 0)
+                {
+                    targetPos = Vector2.zero;
+                    switch (FacingDir)
+                    {
+                        case Facing.UP:
+                            Debug.Log("UP");
+                            targetPos.y = 1;
+                            break;
+                        case Facing.DOWN:
+                            Debug.Log("DOWN");
+                            targetPos.y = -1;
+                            break;
+                        case Facing.LEFT:
+                            Debug.Log("LEFT");
+                            targetPos.x = -1;
+                            break;
+                        case Facing.RIGHT:
+                            Debug.Log("RIGHT");
+                            targetPos.x = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                AttemptToDash();
             }
-            else if (FacingDir == Facing.DOWN)
-            {
-                targetPos.y = -1;
-                UpDown = false;
-                LeftRight = false;
-            }
-            else if (FacingDir == Facing.LEFT)
-            {
-                targetPos.x = -1;
-                UpDown = false;
-                LeftRight = false;
-            }
-            else if (FacingDir == Facing.RIGHT)
-            {
-                targetPos.x = 1;
-                UpDown = false;
-                LeftRight = true;
-            }
-
-            Vector2 dashVector = targetPos * dashRange;
-
-            int playerLayer = LayerMask.NameToLayer("Player");
-            int layerMask = ~(1 << playerLayer); // where choose tags there layers
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dashVector.normalized, dashVector.magnitude, layerMask);
-
-            if (hit.collider != null && hit.collider.CompareTag("Wall"))
-            {
-                //Debug.Log(dashVector);
-                dashVector = targetPos * (dashRange * 0.05f);
-            }
-            // Perform the dash
-            transform.Translate(dashVector);
         }
+    }
+    private void AttemptToDash()
+    {
+        isDashing = true;
+        dashTimeLeft = dashTime;
+        lastDash = Time.time;
+        PlayerAfterImagePool.instance.GetFromPool();
+        lastImagexpos = transform.position.x;
+        StartCoroutine(Reset(dashTime));
+    }
+    private void CheckDash()
+    {
+        if (isDashing)
+        {
+            if(dashTimeLeft > 0)
+            {
+                //Debug.Log(targetPos.x + " : " + targetPos.y + " * " + dashSpeed);
+                onStart?.Invoke();
+                GetComponent<Rigidbody2D>().velocity = new Vector2(dashSpeed * targetPos.x, dashSpeed * targetPos.y);
+                dashTimeLeft -= Time.deltaTime;
+
+                if (Mathf.Abs(transform.position.x - lastImagexpos) > distanceBetweenImages)
+                {
+                    PlayerAfterImagePool.instance.GetFromPool();
+                    lastImagexpos = transform.position.x;
+                }
+            }
+        }
+    }
+    private IEnumerator Reset(float value)
+    {
+        yield return new WaitForSeconds(value);
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        isDashing = false;
+        onDone.Invoke();
     }
 
     private void SetAnimatorMovement(Vector2 direction)

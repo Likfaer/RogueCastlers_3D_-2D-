@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObject: 0
-  pickupQuantity: -5
+  pickupQuantity: -4
 --- !u!114 &7146649368158305636
 MonoBehaviour:
   m_ObjectHideFlags: 0
