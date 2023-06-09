@@ -36,8 +36,8 @@ public class PlayerSpawner : MonoBehaviour
 
                     //Damage Stats
                     NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 300;
-                    NakedPlayer.GetComponentInChildren<WeaponParent>().minDamage = 50;
-                    NakedPlayer.GetComponentInChildren<WeaponParent>().maxDamage = 90;
+                    NakedPlayer.GetComponentInChildren<WeaponParent>().minDamage = 40;
+                    NakedPlayer.GetComponentInChildren<WeaponParent>().maxDamage = 80;
                     NakedPlayer.GetComponentInChildren<WeaponParent>().attackCooldown = 0.75f;
                     break;
 
@@ -53,13 +53,13 @@ public class PlayerSpawner : MonoBehaviour
 
                     //Damage Stats
                     NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 175;
-                    NakedPlayer.GetComponentInChildren<TestSpell>().minDamage = 55;
-                    NakedPlayer.GetComponentInChildren<TestSpell>().maxDamage = 85;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().minDamage = 35;
+                    NakedPlayer.GetComponentInChildren<TestSpell>().maxDamage = 75;
                     NakedPlayer.GetComponentInChildren<TestSpell>().projectileForce = 0.9f;
                     NakedPlayer.GetComponentInChildren<TestSpell>().attackCooldown = 0.35f;
                     break;
 
-                case ("Shield"):
+                case ("Arbiter"):
                     //Base Activations
                     NakedPlayer.transform.Find("ShieldProtector").gameObject.SetActive(true);
 
@@ -70,14 +70,14 @@ public class PlayerSpawner : MonoBehaviour
                     NakedPlayer.GetComponentInChildren<PlayerStats>().maxHealth = 250;
                     NakedPlayer.GetComponentInChildren<ShieldProtector>().maxObjects = 5;
                     NakedPlayer.GetComponentInChildren<ShieldProtector>().orbitRadius = 0.3f;
-                    NakedPlayer.GetComponentInChildren<ShieldProtector>().orbitSpeed = 70f;
-                    NakedPlayer.GetComponentInChildren<ShieldProtector>().damage = 15;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().orbitSpeed = 60f;
+                    NakedPlayer.GetComponentInChildren<ShieldProtector>().damage = 8;
                     break;
 
 
 
                 default:
-                    //Debug.Log("4to-to ne tak");
+                    Debug.Log("4to-to ne tak");
                     //Base Activations
                     NakedPlayer.transform.Find("WeaponParent").gameObject.SetActive(true);
                     NakedPlayer.transform.Find("RangeParent").gameObject.SetActive(true);

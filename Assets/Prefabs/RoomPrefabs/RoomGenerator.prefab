@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
+  - {fileID: 7735386923260028129, guid: 1d5f09366271c1d4a977266b5bdede4d, type: 3}
   - {fileID: 7735386923260028129, guid: b027e999c28db6241b0422e00212d82b, type: 3}
   - {fileID: 7735386923260028129, guid: 9283011e2017ce644a2e24c103cd8a9a, type: 3}
   SpawnRate: 1.33

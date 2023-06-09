@@ -51,9 +51,11 @@ public class CharacterSelectorUI : MonoBehaviour
             case ("Range"):
                 //Debug.Log("RangeNow");
                 characterPrefab.transform.Find("RangeParent").gameObject.SetActive(true);
+                characterPrefab.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
+                characterPrefab.transform.Find("RangeParent/TestSpell").GetComponent<TestSpell>().enabled = false;
                 //characterPrefab.transform.Find("RangeParent/TestSpell").gameObject.SetActive(true);
                 break;
-            case ("Shield"):
+            case ("Arbiter"):
                 //Debug.Log("RangeNow");
                 characterPrefab.transform.Find("ShieldProtector").gameObject.SetActive(true);
                 characterPrefab.GetComponentInChildren<ShieldProtector>().maxObjects = 5; 
@@ -73,8 +75,8 @@ public class CharacterSelectorUI : MonoBehaviour
         foreach (Transform ttc in pref.GetComponentInChildren<ShieldProtector>().gameObject.transform)
         {
             GameObject circ = ttc.gameObject;
-            circ.transform.localScale = new Vector3(0.025f, 0.025f, 1f);
-            circ.transform.position = new Vector3(0f, 0f, -2f);
+            circ.transform.localScale = new Vector3(0.175f, 0.175f, -1f);
+            //circ.transform.position = new Vector3(0f, 0f, 0f);
         }
     }
 

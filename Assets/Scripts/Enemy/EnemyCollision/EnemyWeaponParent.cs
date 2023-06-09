@@ -9,7 +9,7 @@ public class EnemyWeaponParent : PlayerExist
     public SpriteRenderer characterRenderer, weaponRenderer;
 
     [SerializeField]
-    private float minDamage, maxDamage, attackCooldown;
+    public float minDamage, maxDamage, attackCooldown;
 
     public Animator animator;
 

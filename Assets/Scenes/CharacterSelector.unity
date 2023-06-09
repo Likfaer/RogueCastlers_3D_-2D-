@@ -479,22 +479,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 71616527221868431, guid: 97a2957c327c29d43a0f43eb5dae5e19, type: 3}
-      propertyPath: characters.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 71616527221868431, guid: 97a2957c327c29d43a0f43eb5dae5e19, type: 3}
-      propertyPath: characters.Array.data[2].name
-      value: Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 71616527221868431, guid: 97a2957c327c29d43a0f43eb5dae5e19, type: 3}
-      propertyPath: characters.Array.data[3].name
-      value: Temp
-      objectReference: {fileID: 0}
-    - target: {fileID: 71616527221868431, guid: 97a2957c327c29d43a0f43eb5dae5e19, type: 3}
-      propertyPath: characters.Array.data[3].prefab
-      value: 
-      objectReference: {fileID: 7345736514443804586, guid: 060a819925d6bae49ab342c45f3f85fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97a2957c327c29d43a0f43eb5dae5e19, type: 3}
 --- !u!1 &1263438316

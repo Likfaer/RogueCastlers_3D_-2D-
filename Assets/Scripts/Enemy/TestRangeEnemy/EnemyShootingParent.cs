@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyShootingParent : PlayerExist
 {
     public GameObject projectile;
-    [SerializeField] private float minDamage, maxDamage, projectileForce;
+    [SerializeField] public float minDamage, maxDamage, projectileForce;
 
     public override void Start()
     {

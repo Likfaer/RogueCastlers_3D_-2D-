@@ -12,7 +12,7 @@ public class EnemyAI : PlayerExist
     /*[SerializeField] private float speed;*/
 
     [SerializeField] private float chaseDistance = 1.5f; // если игрок в радиусе то бежим к нему
-    [SerializeField] private float attackDistance = 0.25f; //если игрока можно ударить, то ударяем
+    [SerializeField] public float attackDistance = 0.25f; //если игрока можно ударить, то ударяем
 
     [SerializeField] private float attackCooldown;
     [SerializeField] public bool ranged;

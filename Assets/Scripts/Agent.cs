@@ -37,7 +37,7 @@ public class Agent : MonoBehaviour
         {
             if(gameObject.GetComponent<EnemyAI>().ranged)
             {
-                EnemyRangeParent = GetComponent<EnemyShootingParent>();
+                EnemyRangeParent = GetComponentInChildren<EnemyShootingParent>();
             }
             else
             {
