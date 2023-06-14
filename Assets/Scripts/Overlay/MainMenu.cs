@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject menuPanel;
     public GameObject settingsPanel;
     public Slider volumeSlider;
     public Toggle fullscreenToggle;
@@ -50,18 +51,23 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine(LoadLevel(2));
     }
-    public void OpenSettings()
-    {
-        settingsPanel.SetActive(true);
-    }
-    public void CloseSettings()
-    {
-        settingsPanel.SetActive(false);
-    }
     public void ExitGame()
     {
         //Debug.Log("Quitting");
         Application.Quit();
+    }
+    public void SwitchMenu()
+    {
+        if (menuPanel.activeSelf == true)
+        {
+            menuPanel.SetActive(false);
+            settingsPanel.SetActive(true);
+        }
+        else
+        {
+            menuPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        }
     }
     public void SetVolume(float volume)
     {
@@ -85,6 +91,7 @@ public class MainMenu : MonoBehaviour
             SetFullscreen(fullscreenToggle.isOn);
         }
     }
+
     void Update()
     {
         
