@@ -20,10 +20,6 @@ public class EnemyWeaponParent : PlayerExist
     {
         base.Start();
     }
-    private void FixedUpdate()
-    {
-        
-    }
     private void Update()
     {
         if (player != null)

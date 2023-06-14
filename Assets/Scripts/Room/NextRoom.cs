@@ -20,7 +20,6 @@ public class NextRoom : PlayerExist
     {
         timerPanel = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerPanel;
         timerNextText = GameObject.Find("UI_Overlay").GetComponent<OverlayUI>().timerNextText;
-
         timerNextText.text = "";
         timerPanel.SetActive(false);
     }
@@ -43,7 +42,6 @@ public class NextRoom : PlayerExist
         if (other.CompareTag("Player"))
         {
             timerPanel.SetActive(false);
-            // If coroutine is still running, stop it
             if (launchScriptCoroutine != null)
             {
                 StopCoroutine(launchScriptCoroutine);
@@ -68,10 +66,12 @@ public class NextRoom : PlayerExist
         playerTP.position = new Vector3 (0.175f, 0.25f, 0f);
         Destroy(oldRG);
         Destroy(oldSG);
-        GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().AddNextRoom();
+        if (nextRoom.name != "ShopGenerator")
+        {
+            GameObject.Find("ServerGameManager").GetComponent<PrefsManager>().AddNextRoom();
+        }
         Instantiate(nextRoom, new Vector3(0.5f,0.5f,0), Quaternion.identity);
     }
-
     private IEnumerator LaunchScriptAfterDelay()
     {
         float timer = TeleportationDelay;
@@ -82,20 +82,7 @@ public class NextRoom : PlayerExist
             yield return null;
         }
         timerNextText.text = "Time: 0.00";
-        
-        //Debug.Log("TP");
-        
         LoadNextRoom();
         launchScriptCoroutine = null;
-    }
-    void PrintChildObjects(GameObject parentObject)
-    {
-        foreach (Transform childTransform in parentObject.transform)
-        {
-            Debug.Log(childTransform.gameObject.name);
-        }
-    }
-    void Update()
-    {
     }
 }

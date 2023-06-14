@@ -9,15 +9,9 @@ using UnityEngine.AI;
 
 public class Agent : MonoBehaviour
 {
-
     //Sunny Valley Movement
-
-    private Vector2 targetPos;
-
     private AgentMover agentMover;
-
     private Vector2 pointerInput, movementInput;
-    
     private WeaponParent weaponParent;
     private EnemyWeaponParent EnemyWeaponParent;
     private EnemyShootingParent EnemyRangeParent;

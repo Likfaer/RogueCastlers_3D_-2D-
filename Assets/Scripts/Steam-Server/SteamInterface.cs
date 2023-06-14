@@ -42,10 +42,4 @@ public class SteamInterface : SteamManager
         texture.Apply();
         return texture;
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

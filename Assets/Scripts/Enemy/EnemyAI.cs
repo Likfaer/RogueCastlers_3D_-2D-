@@ -18,11 +18,11 @@ public class EnemyAI : PlayerExist
     [SerializeField] public bool ranged;
     private float lastAttackTime;
 
-    private bool PlayerLoss = true;
+    private bool playerLoss = true;
 
     // animation
     private Animator animator;
-    Vector2 direction;
+    private Vector2 direction;
     private bool UpDown, LeftRight;
 
     public override void Start()
@@ -39,7 +39,7 @@ public class EnemyAI : PlayerExist
             float distance = Vector2.Distance(targetPos, gameObject.transform.position);
             if (distance < chaseDistance)
             {
-                PlayerLoss = false;
+                playerLoss = false;
                 if (distance <= attackDistance)
                 {
                     animator.SetLayerWeight(1, 0);
@@ -54,7 +54,7 @@ public class EnemyAI : PlayerExist
                 else
                 {
                     //chasing
-                    if (PlayerLoss == false)
+                    if (playerLoss == false)
                     {
                         animator.SetBool("Stay", false);
                         direction = targetPos - transform.position;
@@ -66,7 +66,7 @@ public class EnemyAI : PlayerExist
             }
             else
             {
-                PlayerLoss = true;
+                playerLoss = true;
                 onMovementInput?.Invoke(Vector2.zero);
                 animator.SetBool("Stay", true);
             }

@@ -27,11 +27,6 @@ public class ShopGenerator : MonoBehaviour
 
     public Text EnemiesCountText;
     public Text RoomsCountText;
-
-    void OnApplicationQuit()
-    {
-        PlayerPrefs.SetInt("RoomsCount", 0);
-    }
     void Start()
     {
         //Debug.Log(PlayerPrefs.GetInt("RoomsCount"));
@@ -151,10 +146,5 @@ public class ShopGenerator : MonoBehaviour
     public Vector2 getRoomSize()
     {
         return size;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
